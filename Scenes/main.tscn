@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://d2nqgkuy516bs"]
+
+[ext_resource type="PackedScene" uid="uid://tas2bojqxb7t" path="res://Characters/Player/player.tscn" id="1_ckd8x"]
+[ext_resource type="PackedScene" uid="uid://daldw1xjcaax0" path="res://Scenes/Industreal/industrial.tscn" id="2_7u5y1"]
+[ext_resource type="PackedScene" uid="uid://u1k6e3tmgfm1" path="res://Scenes/Exclusion/exclusion.tscn" id="3_k1ohe"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Industrial" parent="." instance=ExtResource("2_7u5y1")]
+
+[node name="Exclusion" parent="." instance=ExtResource("3_k1ohe")]
+position = Vector2(1984, 0)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_ckd8x")]
+position = Vector2(316, 944)
