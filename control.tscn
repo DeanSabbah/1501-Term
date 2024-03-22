@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bn43pvsgonm31"]
+
+[ext_resource type="Script" path="res://TextureRect.gd" id="1_pg2au"]
+[ext_resource type="Texture2D" uid="uid://dll3v5krstodc" path="res://image-removebg-preview.png" id="1_qoq8t"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Cursor" type="TextureRect" parent="."]
+texture_filter = 3
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.0699844, 0.063529)
+texture = ExtResource("1_qoq8t")
+script = ExtResource("1_pg2au")
