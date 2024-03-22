@@ -14,6 +14,7 @@ func _process(_add_constant_torquedelta):
 	var min = Vector2(0, 0)
 	var max = Vector2(1152, 648)
 	
+	self.position.clamp(min, max)
 	pass
 	
 
