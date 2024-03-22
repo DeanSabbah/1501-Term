@@ -14,7 +14,10 @@ func _process(_add_constant_torquedelta):
 	var min = Vector2(0, 0)
 	var max = Vector2(1152, 648)
 	
-	self.position.clamp(min, max)
+	var mouse_position_boundaries = self.position.clamp(min, max)
+
+	if (self.position != mouse_position_boundaries):
+		self.position = mouse_position_boundaries
 	pass
 	
 
