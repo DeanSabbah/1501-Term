@@ -1,5 +1,4 @@
 extends CharacterBody2D
-
 @export var speed = 400
 @export var jump_timing = 0
 const gravity = 10000
@@ -74,4 +73,3 @@ func shooting_bullet(shooting):
 		pass
 		
 	pass
-	

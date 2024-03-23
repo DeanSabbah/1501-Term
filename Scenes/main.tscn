@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://d2nqgkuy516bs"]
+[gd_scene load_steps=5 format=3 uid="uid://d2nqgkuy516bs"]
 
 [ext_resource type="PackedScene" uid="uid://tas2bojqxb7t" path="res://Characters/Player/player.tscn" id="1_ckd8x"]
 [ext_resource type="PackedScene" uid="uid://daldw1xjcaax0" path="res://Scenes/Industreal/industrial.tscn" id="2_7u5y1"]
 [ext_resource type="PackedScene" uid="uid://u1k6e3tmgfm1" path="res://Scenes/Exclusion/exclusion.tscn" id="3_k1ohe"]
 [ext_resource type="PackedScene" uid="uid://ci2wylrmly0ip" path="res://player_cursor.tscn" id="4_3twsn"]
-[ext_resource type="PackedScene" uid="uid://b2tg1dctn6igr" path="res://PLAYER2.tscn" id="5_eummx"]
 
 [node name="Main" type="Node2D"]
 
@@ -21,9 +20,4 @@ offset_bottom = 621.0
 position = Vector2(1984, 0)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_ckd8x")]
-visible = false
 position = Vector2(316, 944)
-
-[node name="CharacterBody2D2" parent="." instance=ExtResource("5_eummx")]
-position = Vector2(239, 937)
-scale = Vector2(1.2, 1.2)
