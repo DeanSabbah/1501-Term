@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://b2tg1dctn6igr"]
+[gd_scene load_steps=13 format=3 uid="uid://b2tg1dctn6igr"]
 
+[ext_resource type="Script" path="res://PLAYER2.gd" id="1_5ffjr"]
 [ext_resource type="Texture2D" uid="uid://c0crigv5fq6wi" path="res://players blue REAL_LEFT.png" id="1_vxjta"]
 [ext_resource type="Texture2D" uid="uid://c2gtbdqbocoxk" path="res://players blue REAL_RIGHT.png" id="2_w123j"]
 
@@ -74,6 +75,7 @@ animations = [{
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 scale = Vector2(0.5, 0.5)
+script = ExtResource("1_5ffjr")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

@@ -21,8 +21,9 @@ offset_bottom = 621.0
 position = Vector2(1984, 0)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_ckd8x")]
+visible = false
 position = Vector2(316, 944)
 
 [node name="CharacterBody2D2" parent="." instance=ExtResource("5_eummx")]
-position = Vector2(202, 848)
-scale = Vector2(3, 3)
+position = Vector2(239, 937)
+scale = Vector2(1.2, 1.2)

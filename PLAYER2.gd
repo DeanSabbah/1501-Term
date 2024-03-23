@@ -31,10 +31,10 @@ func _physics_process(delta):
 	get_input()
 	
 	if velocity == Vector2.ZERO and Input.is_action_just_released("right"):
-		$AnimatedSprite2D.play("idle_right")
+		$AnimatedSprite2D.play("idle_left")
 
 	elif velocity == Vector2.ZERO and Input.is_action_just_released("left"):
-		$AnimatedSprite2D.play("idle_left")
+		$AnimatedSprite2D.play("idle_right")
 
 	elif velocity.x == (1 * speed):
 		$AnimatedSprite2D.play("walk_left")
