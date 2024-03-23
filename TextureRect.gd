@@ -8,7 +8,7 @@ func _ready():
 
 
 
-func _process(_add_constant_torquedelta):	
+func _process(delta):	
 	mouse_position = get_viewport().get_mouse_position()
 	self.position = mouse_position + Vector2(-30, -25)
 	var min = Vector2(0, 0)
