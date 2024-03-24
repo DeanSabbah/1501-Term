@@ -1,9 +1,10 @@
-[gd_scene load_steps=24 format=3 uid="uid://tas2bojqxb7t"]
+[gd_scene load_steps=25 format=3 uid="uid://tas2bojqxb7t"]
 
 [ext_resource type="Script" path="res://Characters/Player/player.gd" id="1_4q1n4"]
-[ext_resource type="Texture2D" uid="uid://bpkvpohpaty82" path="res://assests/players_blue_x1.png" id="1_uftsh"]
-[ext_resource type="Texture2D" uid="uid://cufit1pexmmsy" path="res://assests/players_blue_x1_LEFT.png" id="3_v8uq1"]
+[ext_resource type="Texture2D" uid="uid://ddb8kp03rm1be" path="res://assests/players_blue_x1.png" id="1_uftsh"]
+[ext_resource type="Texture2D" uid="uid://c7j3u5biedk8f" path="res://assests/players_blue_x1_LEFT.png" id="3_v8uq1"]
 [ext_resource type="Script" path="res://Characters/Player/Camera2D.gd" id="4_nw101"]
+[ext_resource type="PackedScene" uid="uid://5gmboch00q36" path="res://Characters/Player/Crosshair.tscn" id="5_0b8xh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mp4lt"]
 atlas = ExtResource("3_v8uq1")
@@ -154,7 +155,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D"]
 scale = Vector2(3, 3)
 script = ExtResource("1_4q1n4")
 
@@ -170,3 +171,6 @@ polygon = PackedVector2Array(0, -1, 0, 0, -6, 0, -6, 1, -7, 1, -7, 8, -6, 8, -6,
 
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("4_nw101")
+
+[node name="Crosshair" parent="." instance=ExtResource("5_0b8xh")]
+scale = Vector2(-0.0615565, 0.0590391)

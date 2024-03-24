@@ -1,16 +1,16 @@
 [gd_scene load_steps=3 format=3 uid="uid://66yk01njaenm"]
 
-[ext_resource type="Script" path="res://Projectile.gd" id="1_78fbu"]
-[ext_resource type="Texture2D" uid="uid://b75qglv54j16o" path="res://image-removebg-preview (1).png" id="2_d1ept"]
+[ext_resource type="Script" path="res://Scenes/Weapons/Projectile.gd" id="1_78fbu"]
+[ext_resource type="Texture2D" uid="uid://b75qglv54j16o" path="res://assests/image-removebg-preview (1).png" id="2_kari7"]
 
-[node name="Area2D" type="Area2D"]
+[node name="Projectile" type="Area2D"]
 script = ExtResource("1_78fbu")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 rotation = -1.5708
 scale = Vector2(0.183, 0.2)
-texture = ExtResource("2_d1ept")
+texture = ExtResource("2_kari7")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(8, -5, -6, -5, -20, -5, -22, -2, -22, 5, -19, 8, -17, 9, -7, 9, 0, 7, 4, 4, 8, 3)

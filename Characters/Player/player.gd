@@ -65,7 +65,7 @@ func _input(event):
 
 func get_player_position():
 	return position
-	
+
 func get_player_velocity():
 	return velocity
 
