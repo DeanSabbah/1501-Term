@@ -1,77 +1,84 @@
 extends CharacterBody2D
 
 @export var speed = 400
-@export var jump_timing = 0
-const gravity = 10000
-var shooting = false
-signal shoot
+@export var jump_strength = -500 # Adjusted for a more noticeable jump
+var gravity = 20
+var mouse_position = get_global_mouse_position()
+var projectileScene = preload("res://Projectile.tscn")
 
-func get_input():
-	var input_direction = Input.get_vector("left", "right", "up", "down")
-	
-	if input_direction == Vector2.ZERO and Input.is_action_just_released("right"):
-		$AnimatedSprite2D.play("idle_right")
-
-	elif input_direction == Vector2.ZERO and Input.is_action_just_released("left"):
-		$AnimatedSprite2D.play("idle_left")
-
-	elif input_direction.x == -1:
-		$AnimatedSprite2D.play("walk_right")
-	elif input_direction.x == 1:
-		$AnimatedSprite2D.play("walk_left")
-	
-	
-	if (Input.is_action_just_pressed("left_click")):
-		shooting = true
-		emit_signal("shoot")
-		
-	velocity = input_direction * speed
-
-		
 func _physics_process(delta):
-	get_input()
+	var input_direction = Input.get_vector("left", "right", "up", "down")
+	velocity.x = input_direction.x * speed
 	
-	if velocity == Vector2.ZERO and Input.is_action_just_released("right"):
-		$AnimatedSprite2D.play("idle_right")
-
-	elif velocity == Vector2.ZERO and Input.is_action_just_released("left"):
-		$AnimatedSprite2D.play("idle_left")
-
-	elif velocity.x == (1 * speed):
-		$AnimatedSprite2D.play("walk_left")
-	elif velocity.x == (-1 * speed):
-		$AnimatedSprite2D.play("walk_right")
-		
-
-		
-		
-	if is_on_floor():
-
-		jump_timing = 0
-	if velocity.y <= ((-1 * 144)):
-		jump_timing += 1
-
-	else:
-		velocity.y = delta * gravity
-
+	# Handle jumping
+	if is_on_floor() and Input.is_action_just_pressed("up"):
+		velocity.y = jump_strength
+	elif not is_on_floor():
+		velocity.y += gravity
 	
-	if jump_timing >= 20:
-		velocity.y = (1 * speed)
-		
-		
+	# Update animations based on movement
+	update_animations()
+	
+	# Move the character
 	move_and_slide()
-	shooting_bullet(shooting)
+
+func _process(delta):
+	pass
+
+func update_animations():
+	var animation = ""
+
+	#determine if the player is moving or not
+	var flag_idle
+	if (velocity.x == 0):
+		flag_idle = true
+	else:
+		flag_idle = false
+	
+	# based on the mouse position, flip the sprite
+	mouse_position = get_global_mouse_position()
+	
+	# if mouse to the left play left
+	if mouse_position.x < position.x:
+		if flag_idle:
+			animation = "idle_left"
+		else:
+			animation = "walk_left"
+	
+	# if mouse to the right play right
+	else:
+		if flag_idle:
+			animation = "idle_right"
+		else:
+			animation = "walk_right"
+
+	$AnimatedSprite2D.play(animation)
+
+
+func _input(event):
+	var parent = get_parent()
+	if event is InputEventMouseButton:
+		if (event.button_index == MOUSE_BUTTON_LEFT and event.pressed):
+			var projectile = projectileScene.instantiate()
+			parent.add_child(projectile)
+			
 
 func get_player_position():
-	while (velocity.y > 0):
-		return position
-	var no_jump_position = position
-	no_jump_position.y = 0
-	return no_jump_position
-
-func shooting_bullet(shooting):
-	if (shooting == false):
-		pass
-		
-	pass
+	return position
 	
+func get_player_velocity():
+	return velocity
+
+	# var mouse_location = get_parent().get_child(0).get_child(0).get_cursor_location()
+	
+	# print("mouse position: ", mouse_location)
+	# print("player velocity: ", velocity)
+ 	# print("player position: ", get_player_position())
+
+ 	# var player_animation_2D = get_child(0)
+
+ 	# if (mouse_location.x <= position.x):
+ 	# 	player_animation_2D.play("idle_left")
+ 	# else:
+	# 	player_animation_2D.play("idle_right")
+	# pass

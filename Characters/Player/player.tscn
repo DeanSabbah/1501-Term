@@ -1,8 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://tas2bojqxb7t"]
+[gd_scene load_steps=24 format=3 uid="uid://tas2bojqxb7t"]
 
 [ext_resource type="Script" path="res://Characters/Player/player.gd" id="1_4q1n4"]
 [ext_resource type="Texture2D" uid="uid://bpkvpohpaty82" path="res://assests/players_blue_x1.png" id="1_uftsh"]
 [ext_resource type="Texture2D" uid="uid://cufit1pexmmsy" path="res://assests/players_blue_x1_LEFT.png" id="3_v8uq1"]
+[ext_resource type="Script" path="res://Characters/Player/Camera2D.gd" id="4_nw101"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mp4lt"]
 atlas = ExtResource("3_v8uq1")
@@ -36,26 +37,6 @@ region = Rect2(96, 288, 32, 32)
 atlas = ExtResource("1_uftsh")
 region = Rect2(128, 288, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_omsc5"]
-atlas = ExtResource("1_uftsh")
-region = Rect2(0, 320, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nvhx7"]
-atlas = ExtResource("1_uftsh")
-region = Rect2(0, 224, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ua2b3"]
-atlas = ExtResource("1_uftsh")
-region = Rect2(32, 320, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_46ba7"]
-atlas = ExtResource("1_uftsh")
-region = Rect2(64, 320, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3hd6e"]
-atlas = ExtResource("1_uftsh")
-region = Rect2(96, 320, 32, 32)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_hkhas"]
 atlas = ExtResource("3_v8uq1")
 region = Rect2(128, 320, 32, 32)
@@ -75,6 +56,26 @@ region = Rect2(224, 320, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_e7dx2"]
 atlas = ExtResource("3_v8uq1")
 region = Rect2(224, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_omsc5"]
+atlas = ExtResource("1_uftsh")
+region = Rect2(0, 320, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nvhx7"]
+atlas = ExtResource("1_uftsh")
+region = Rect2(0, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ua2b3"]
+atlas = ExtResource("1_uftsh")
+region = Rect2(32, 320, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_46ba7"]
+atlas = ExtResource("1_uftsh")
+region = Rect2(64, 320, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3hd6e"]
+atlas = ExtResource("1_uftsh")
+region = Rect2(96, 320, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_f26lg"]
 animations = [{
@@ -114,26 +115,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_omsc5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nvhx7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ua2b3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_46ba7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3hd6e")
-}],
-"loop": true,
-"name": &"walk_left",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_hkhas")
 }, {
 "duration": 1.0,
@@ -149,6 +130,26 @@ animations = [{
 "texture": SubResource("AtlasTexture_e7dx2")
 }],
 "loop": true,
+"name": &"walk_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_omsc5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nvhx7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ua2b3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_46ba7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3hd6e")
+}],
+"loop": true,
 "name": &"walk_right",
 "speed": 5.0
 }]
@@ -160,11 +161,12 @@ script = ExtResource("1_4q1n4")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 3
 sprite_frames = SubResource("SpriteFrames_f26lg")
-animation = &"idle_left"
-autoplay = "idle_right"
-frame_progress = 0.836221
+animation = &"walk_right"
+autoplay = "idle_left"
+frame_progress = 0.00294553
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(0, -1, 0, 0, -6, 0, -6, 1, -7, 1, -7, 8, -6, 8, -6, 9, -5, 9, -5, 10, -4, 10, -4, 14, 4, 14, 4, 13, 5, 13, 5, 11, 8, 11, 8, 10, 11, 10, 11, 5, 7, 5, 7, 1, 6, 1, 6, 0, 4, 0, 4, -1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("4_nw101")
