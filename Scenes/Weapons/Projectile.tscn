@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://66yk01njaenm"]
 
-[ext_resource type="Script" path="res://Projectile.gd" id="1_78fbu"]
+[ext_resource type="Script" path="res://Scenes/Weapons/Projectile.gd" id="1_78fbu"]
 [ext_resource type="Texture2D" uid="uid://b75qglv54j16o" path="res://assests/image-removebg-preview (1).png" id="2_kari7"]
 
 [node name="Projectile" type="Area2D"]
