@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://tas2bojqxb7t" path="res://Characters/Player/player.tscn" id="1_ckd8x"]
 [ext_resource type="PackedScene" uid="uid://daldw1xjcaax0" path="res://Scenes/Industreal/industrial.tscn" id="2_7u5y1"]
 [ext_resource type="PackedScene" uid="uid://u1k6e3tmgfm1" path="res://Scenes/Exclusion/exclusion.tscn" id="3_k1ohe"]
-[ext_resource type="PackedScene" uid="uid://5gmboch00q36" path="res://CROSSHAIR.tscn" id="4_8jc7h"]
+[ext_resource type="PackedScene" uid="uid://5gmboch00q36" path="res://Crosshair.tscn" id="4_8jc7h"]
 [ext_resource type="PackedScene" uid="uid://66yk01njaenm" path="res://Projectile.tscn" id="5_m77oq"]
 
 [node name="Main" type="Node2D"]

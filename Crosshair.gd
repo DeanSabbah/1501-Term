@@ -1,4 +1,4 @@
-class_name cursor extends TextureRect
+extends Control
 @export var mouse_position = Vector2.ZERO
 
 
@@ -22,3 +22,10 @@ func _process(delta):
 
 func get_cursor_location():
 	return self.position
+
+func get_direction():
+	var player_pos = get_parent().get_node("player").get_player_position()
+	var mouse_pos = get_global_mouse_position()
+
+	var direction = (mouse_pos - player_pos).normalized()
+	return direction
