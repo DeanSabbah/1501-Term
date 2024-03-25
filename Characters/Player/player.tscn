@@ -1,10 +1,11 @@
-[gd_scene load_steps=25 format=3 uid="uid://tas2bojqxb7t"]
+[gd_scene load_steps=27 format=3 uid="uid://tas2bojqxb7t"]
 
 [ext_resource type="Script" path="res://Characters/Player/player.gd" id="1_4q1n4"]
 [ext_resource type="Texture2D" uid="uid://ddb8kp03rm1be" path="res://assests/players_blue_x1.png" id="1_uftsh"]
 [ext_resource type="Texture2D" uid="uid://c7j3u5biedk8f" path="res://assests/players_blue_x1_LEFT.png" id="3_v8uq1"]
 [ext_resource type="Script" path="res://Characters/Player/Camera2D.gd" id="4_nw101"]
 [ext_resource type="PackedScene" uid="uid://5gmboch00q36" path="res://Characters/Player/Crosshair.tscn" id="5_0b8xh"]
+[ext_resource type="PackedScene" uid="uid://bkymt1bsid8is" path="res://Scenes/HUD/hud.tscn" id="5_mkg5g"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mp4lt"]
 atlas = ExtResource("3_v8uq1")
@@ -155,22 +156,40 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2obv0"]
+radius = 15.3766
+height = 30.7533
+
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(3, 3)
 script = ExtResource("1_4q1n4")
+speed = 400
+jump_strength = -500
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 3
 sprite_frames = SubResource("SpriteFrames_f26lg")
 animation = &"walk_right"
 autoplay = "idle_left"
-frame_progress = 0.00294553
+frame = 4
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(0, -1, 0, 0, -6, 0, -6, 1, -7, 1, -7, 8, -6, 8, -6, 9, -5, 9, -5, 10, -4, 10, -4, 14, 4, 14, 4, 13, 5, 13, 5, 11, 8, 11, 8, 10, 11, 10, 11, 5, 7, 5, 7, 1, 6, 1, 6, 0, 4, 0, 4, -1)
+[node name="CollisionBox" type="CollisionShape2D" parent="."]
+position = Vector2(0.333333, 6)
+scale = Vector2(0.433558, 0.662062)
+shape = SubResource("CapsuleShape2D_2obv0")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("4_nw101")
 
+[node name="HUD" parent="Camera2D" instance=ExtResource("5_mkg5g")]
+
 [node name="Crosshair" parent="." instance=ExtResource("5_0b8xh")]
 scale = Vector2(-0.0615565, 0.0590391)
+
+[node name="HitBoxArea" type="Area2D" parent="."]
+position = Vector2(0.333333, 1.66667)
+
+[node name="Hitbox" type="CollisionShape2D" parent="HitBoxArea"]
+position = Vector2(0, 4.33333)
+scale = Vector2(0.433558, 0.662062)
+shape = SubResource("CapsuleShape2D_2obv0")
