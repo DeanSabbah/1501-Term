@@ -10,14 +10,14 @@ var xp:int = 0
 var level:int = 1
 var nextLevel:int = 50
 
-@onready var progress_bar = $Camera2D/HUD/ProgressBar
+@onready var hud = $Camera2D/HUD
 
-signal leveled_up(nextLevel:int, xp:int)
+signal leveled_up(level, nextLevel:int, xp:int)
 signal got_xp(xp:int)
 
 func _ready():
-	leveled_up.connect(progress_bar.level_up)
-	got_xp.connect(progress_bar.set_xp)
+	leveled_up.connect(hud.level_up)
+	got_xp.connect(hud.set_xp)
 	leveled_up.emit(level, nextLevel, xp)
 
 func _physics_process(delta):
@@ -97,5 +97,5 @@ func level_up():
 	print("YOU LEVELED UP TO: ", level)
 	print("NEXT LEVEL AT: ", nextLevel)
 	print("---------------------------")
-	leveled_up.emit(nextLevel, xp)
+	leveled_up.emit(level, nextLevel, xp)
 
