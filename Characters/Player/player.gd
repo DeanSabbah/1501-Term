@@ -1,10 +1,24 @@
 extends CharacterBody2D
 
-@export var speed = 400
-@export var jump_strength = -500 # Adjusted for a more noticeable jump
+@export var speed:int
+@export var jump_strength:int # Adjusted for a more noticeable jump
+
 var gravity = 20
 var mouse_position = get_global_mouse_position()
-var projectileScene = preload("res://Projectile.tscn")
+var projectileScene = preload("res://Scenes/Weapons/Projectile.tscn")
+var xp:int = 0
+var level:int = 1
+var nextLevel:int = 50
+
+@onready var progress_bar = $Camera2D/HUD/ProgressBar
+
+signal leveled_up(nextLevel:int, xp:int)
+signal got_xp(xp:int)
+
+func _ready():
+	leveled_up.connect(progress_bar.level_up)
+	got_xp.connect(progress_bar.set_xp)
+	leveled_up.emit(level, nextLevel, xp)
 
 func _physics_process(delta):
 	var input_direction = Input.get_vector("left", "right", "up", "down")
@@ -56,12 +70,12 @@ func update_animations():
 
 
 func _input(event):
-	var parent = get_parent()
+	var parent = get_node("/root/Main")
 	if event is InputEventMouseButton:
 		if (event.button_index == MOUSE_BUTTON_LEFT and event.pressed):
 			var projectile = projectileScene.instantiate()
+			projectile.damage = 10
 			parent.add_child(projectile)
-			
 
 func get_player_position():
 	return position
@@ -69,16 +83,19 @@ func get_player_position():
 func get_player_velocity():
 	return velocity
 
-	# var mouse_location = get_parent().get_child(0).get_child(0).get_cursor_location()
-	
-	# print("mouse position: ", mouse_location)
-	# print("player velocity: ", velocity)
- 	# print("player position: ", get_player_position())
 
- 	# var player_animation_2D = get_child(0)
+func give_xp():
+	xp += 25
+	print("PLAYER XP: ", xp)
+	got_xp.emit(xp)
+	while(xp >= nextLevel):
+		level_up()
 
- 	# if (mouse_location.x <= position.x):
- 	# 	player_animation_2D.play("idle_left")
- 	# else:
-	# 	player_animation_2D.play("idle_right")
-	# pass
+func level_up():
+	level += 1
+	nextLevel = ceil(nextLevel * 1.5)
+	print("YOU LEVELED UP TO: ", level)
+	print("NEXT LEVEL AT: ", nextLevel)
+	print("---------------------------")
+	leveled_up.emit(nextLevel, xp)
+
