@@ -1,8 +1,8 @@
-[gd_scene load_steps=27 format=3 uid="uid://tas2bojqxb7t"]
+[gd_scene load_steps=28 format=3 uid="uid://tas2bojqxb7t"]
 
 [ext_resource type="Script" path="res://Characters/Player/player.gd" id="1_4q1n4"]
-[ext_resource type="Texture2D" uid="uid://ddb8kp03rm1be" path="res://assests/players_blue_x1.png" id="1_uftsh"]
-[ext_resource type="Texture2D" uid="uid://c7j3u5biedk8f" path="res://assests/players_blue_x1_LEFT.png" id="3_v8uq1"]
+[ext_resource type="Texture2D" uid="uid://b04vsueegjiys" path="res://assests/players_blue_x1.png" id="1_uftsh"]
+[ext_resource type="Texture2D" uid="uid://br67n8h76kj8u" path="res://assests/players_blue_x1_LEFT.png" id="3_v8uq1"]
 [ext_resource type="Script" path="res://Characters/Player/Camera2D.gd" id="4_nw101"]
 [ext_resource type="PackedScene" uid="uid://5gmboch00q36" path="res://Characters/Player/Crosshair.tscn" id="5_0b8xh"]
 [ext_resource type="PackedScene" uid="uid://bkymt1bsid8is" path="res://Scenes/HUD/hud.tscn" id="5_mkg5g"]
@@ -156,6 +156,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cic2v"]
+size = Vector2(18.452, 23.5939)
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2obv0"]
 radius = 15.3766
 height = 30.7533
@@ -174,9 +177,9 @@ autoplay = "idle_left"
 frame = 4
 
 [node name="CollisionBox" type="CollisionShape2D" parent="."]
-position = Vector2(0.333333, 6)
+position = Vector2(-7.94729e-08, 7.18969)
 scale = Vector2(0.433558, 0.662062)
-shape = SubResource("CapsuleShape2D_2obv0")
+shape = SubResource("RectangleShape2D_cic2v")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("4_nw101")
