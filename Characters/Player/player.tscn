@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://tas2bojqxb7t"]
+[gd_scene load_steps=26 format=3 uid="uid://tas2bojqxb7t"]
 
 [ext_resource type="Script" path="res://Characters/Player/player.gd" id="1_4q1n4"]
 [ext_resource type="Texture2D" uid="uid://ddb8kp03rm1be" path="res://assests/players_blue_x1.png" id="1_uftsh"]
@@ -156,10 +156,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2obv0"]
-radius = 15.3766
-height = 30.7533
-
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(3, 3)
 script = ExtResource("1_4q1n4")
@@ -173,11 +169,6 @@ animation = &"walk_right"
 autoplay = "idle_left"
 frame = 4
 
-[node name="CollisionBox" type="CollisionShape2D" parent="."]
-position = Vector2(0.333333, 6)
-scale = Vector2(0.433558, 0.662062)
-shape = SubResource("CapsuleShape2D_2obv0")
-
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("4_nw101")
 
@@ -189,7 +180,8 @@ scale = Vector2(-0.0615565, 0.0590391)
 [node name="HitBoxArea" type="Area2D" parent="."]
 position = Vector2(0.333333, 1.66667)
 
-[node name="Hitbox" type="CollisionShape2D" parent="HitBoxArea"]
-position = Vector2(0, 4.33333)
-scale = Vector2(0.433558, 0.662062)
-shape = SubResource("CapsuleShape2D_2obv0")
+[node name="Hitbox" type="CollisionPolygon2D" parent="HitBoxArea"]
+polygon = PackedVector2Array(-4.33333, 8.33333, -7.33333, 6.33333, -7.33333, -0.66667, -6.33333, -1.66667, 5.66667, -1.66667, 6.66667, -0.66667, 6.66667, 6.66666, 3.66667, 8.33333, 3.66667, 11.3333, 1, 14.3333, -1.33333, 14.3333, -4.33333, 11.3333)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-4, 10, -7, 8, -7, 1, -6, 0, 6, 0, 7, 1, 7, 8.33333, 4, 10, 4, 13, 1.33333, 16, -1, 16, -4, 13)
