@@ -17,7 +17,7 @@ func get_cursor_location():
 	return self.position
 
 func get_direction():
-	var player_pos = get_parent().get_player_position()
+	var player_pos = get_parent().position
 	var mouse_pos = get_global_mouse_position()
 
 	var direction = (mouse_pos - player_pos).normalized()

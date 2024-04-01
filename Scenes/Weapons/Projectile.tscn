@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://66yk01njaenm"]
 
 [ext_resource type="Script" path="res://Scenes/Weapons/Projectile.gd" id="1_78fbu"]
-[ext_resource type="Texture2D" uid="uid://cqxuf7nyrbqr" path="res://assests/image-removebg-preview (1).png" id="2_kari7"]
+[ext_resource type="Texture2D" uid="uid://dmc4ivly3m300" path="res://assests/image-removebg-preview (1).png" id="2_vkgm5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1tyln"]
 radius = 9.0
@@ -9,13 +9,13 @@ height = 28.0
 
 [node name="Projectile" type="Area2D"]
 script = ExtResource("1_78fbu")
-speed = 1200
+speed = 50
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 rotation = -1.5708
 scale = Vector2(0.183, 0.2)
-texture = ExtResource("2_kari7")
+texture = ExtResource("2_vkgm5")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(1, 0)

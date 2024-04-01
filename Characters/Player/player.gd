@@ -83,8 +83,8 @@ func get_player_velocity():
 	return velocity
 
 
-func give_xp():
-	xp += 25
+func give_xp(xp_in):
+	xp += xp_in
 	print("PLAYER XP: ", xp)
 	got_xp.emit(xp)
 	while(xp >= nextLevel):

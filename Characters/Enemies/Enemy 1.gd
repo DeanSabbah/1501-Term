@@ -4,9 +4,7 @@ signal death_anim
 var projectileScene = preload("res://Scenes/Weapons/Enemy_Projectile.tscn")
 
 func attack():
-	print("HERE!!!")
+	print("attacking")
 	cooldownTimer.start()
-	var projectile = projectileScene.instantiate()
-	#print("PROJECTILE POSITION: ", projectile.positon)
-	projectile.damage = attackDamage
+	var projectile = Enemy_Projectile.new(self.position, attackDamage)
 	get_parent().add_child(projectile)
