@@ -22,13 +22,13 @@ func _ready():
 
 func _physics_process(delta):
 	var input_direction = Input.get_vector("left", "right", "up", "down")
-	velocity.x = input_direction.x * speed
+	velocity.x = input_direction.x * speed * 60 * delta
 	
 	# Handle jumping
 	if is_on_floor() and Input.is_action_just_pressed("up"):
-		velocity.y = jump_strength
+		velocity.y = jump_strength * delta * 60
 	elif not is_on_floor():
-		velocity.y += gravity
+		velocity.y += gravity * delta * 60
 	
 	# Update animations based on movement
 	update_animations()
