@@ -15,7 +15,7 @@ position = Vector2(2489, 30)
 [node name="player" parent="." instance=ExtResource("1_ckd8x")]
 visibility_layer = 5
 z_index = 3
-position = Vector2(1947, 511)
+position = Vector2(146, 926)
 
 [node name="Enemy 1" parent="." instance=ExtResource("4_tcces")]
 position = Vector2(815, 569)

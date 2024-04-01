@@ -16,6 +16,8 @@ var inside:bool
 var inRange:bool
 
 func _ready():
+	var animation_node = get_node("Sprite2D")
+	animation_node.play("idle_1")
 	$ViewRange/CollisionShape2D.shape.radius = viewRange
 	$AttackRange/CollisionShape2D.shape.radius = attackRange
 	cooldownTimer.wait_time = cooldown
@@ -44,10 +46,12 @@ func _on_attack_range_body_exited(body:Node2D):
 		inRange = false
 
 func _physics_process(delta):
+	var sprite = get_node("Sprite2D")
 	if cooldownTimer.is_stopped() and inRange:
 		attack(delta)
 	else:
 		pass
+	
 
 func _on_hit_box_area_entered(area):
 	if area is Projectile:
@@ -58,6 +62,7 @@ func _on_hit_box_area_entered(area):
 func take_damage(amount: int):
 	health -= amount
 	print("ENEMY HEALTH: ", health)
+	
 	if (health <= 0):
 		die()
 
@@ -66,8 +71,12 @@ func die():
 	#PLAY SOME ANIMATION BEFORE DYING .. ?
 	player.give_xp()
 	
-	
 	# deletes the enemy
 	queue_free()
 
-	
+
+func death_animation():
+	var sprite = get_node("Sprite2D")
+	var animation_node = get_node("Sprite2D")
+	print("DEATH ANIMATION")
+	animation_node.play("death")
