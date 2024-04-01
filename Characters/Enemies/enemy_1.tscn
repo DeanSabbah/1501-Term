@@ -1,48 +1,134 @@
-[gd_scene load_steps=6 format=3 uid="uid://ckiadpp57mdd"]
+[gd_scene load_steps=10 format=3 uid="uid://ckiadpp57mdd"]
 
 [ext_resource type="Script" path="res://Characters/Enemies/enemy 1.gd" id="1_jv4dg"]
-[ext_resource type="Texture2D" uid="uid://bev16cqp8a4sv" path="res://assests/temp prototpye/Totaly an enemy.png" id="1_pc6ts"]
+[ext_resource type="Texture2D" uid="uid://bqs565xd02gpv" path="res://Characters/Enemies/Enemy1 animations.png" id="2_k4ibs"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_gs0i5"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_ys0pc"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_bkv88"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h5u0i"]
 radius = 72.0
 
+[sub_resource type="Animation" id="Animation_n7cdy"]
+resource_name = "death"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.101406, 0.201767, 0.299232, 0.401824, 0.501853, 0.598464, 0.701731),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 3), Vector2i(1, 3), Vector2i(2, 3), Vector2i(3, 3), Vector2i(4, 3), Vector2i(5, 3), Vector2i(6, 3), Vector2i(7, 3)]
+}
+
+[sub_resource type="Animation" id="Animation_bb3uv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 3)]
+}
+
+[sub_resource type="Animation" id="Animation_o685c"]
+resource_name = "idle"
+length = 0.8
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.00391893, 0.20384, 0.405373, 0.602876),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_8055l"]
+resource_name = "shoot"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.04366),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(3, 2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m0jbd"]
+_data = {
+"RESET": SubResource("Animation_bb3uv"),
+"death": SubResource("Animation_n7cdy"),
+"idle": SubResource("Animation_o685c"),
+"shoot": SubResource("Animation_8055l")
+}
+
 [node name="Enemy 1" type="CharacterBody2D"]
-scale = Vector2(0.289534, 0.457738)
 script = ExtResource("1_jv4dg")
 attackRange = 70
-viewRange = 120
+viewRange = 125
+attackDamage = null
 speed = 50
-maxHealth = 10
+maxHealth = 50
+expDrop = null
+cooldown = 0.6
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("1_pc6ts")
+texture_filter = 1
+texture = ExtResource("2_k4ibs")
+hframes = 10
+vframes = 4
+frame = 30
 
 [node name="Cooldown" type="Timer" parent="."]
+one_shot = true
 
 [node name="AttackRange" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
-scale = Vector2(1.55261, 1)
-shape = SubResource("CircleShape2D_gs0i5")
+position = Vector2(3, -14)
+shape = SubResource("CircleShape2D_bkv88")
 
 [node name="ViewRange" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ViewRange"]
-scale = Vector2(1.55261, 1)
-shape = SubResource("CircleShape2D_ys0pc")
+position = Vector2(3, -14)
+shape = SubResource("CircleShape2D_h5u0i")
 
 [node name="HitBox" type="Area2D" parent="."]
 
 [node name="HitBox" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(3, -14)
+scale = Vector2(0.2, 0.2)
 shape = SubResource("CircleShape2D_h5u0i")
 
 [node name="CollisionBox" type="CollisionShape2D" parent="."]
+position = Vector2(3, -14)
+scale = Vector2(0.1, 0.1)
 shape = SubResource("CircleShape2D_h5u0i")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_m0jbd")
+}
 
 [connection signal="body_entered" from="AttackRange" to="." method="_on_attack_range_body_entered"]
 [connection signal="body_exited" from="AttackRange" to="." method="_on_attack_range_body_exited"]

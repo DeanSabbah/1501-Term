@@ -4,9 +4,12 @@ class_name Projectile extends Area2D
 var direction = Vector2.ZERO # Initialized to a zero vector
 var damage:int
 
+@onready var player = get_node("/root/Main/player")
+
 func _ready():
-	direction = get_parent().get_node("player/Crosshair").get_direction()
-	self.position = get_parent().get_node("player").position
+	print(player)
+	direction = player.get_node("Crosshair").get_direction()
+	self.position = player.position
 	self.rotation = direction.angle()
 
 func _process(delta):
@@ -14,3 +17,7 @@ func _process(delta):
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	queue_free()
+
+func _on_body_entered(body:Node2D):
+	if (body is TileMap):
+		queue_free()

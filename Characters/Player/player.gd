@@ -70,12 +70,11 @@ func update_animations():
 
 
 func _input(event):
-	var parent = get_node("/root/Main")
 	if event is InputEventMouseButton:
 		if (event.button_index == MOUSE_BUTTON_LEFT and event.pressed):
 			var projectile = projectileScene.instantiate()
 			projectile.damage = 10
-			parent.add_child(projectile)
+			get_parent().add_child(projectile)
 
 func get_player_position():
 	return position
