@@ -90,7 +90,7 @@ viewRange = 125
 attackDamage = 10
 speed = 50
 maxHealth = 50
-cooldown = 0.6
+cooldown = 0.4
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -118,7 +118,6 @@ shape = SubResource("CircleShape2D_bsfou")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 position = Vector2(3, -14)
-scale = Vector2(0.1, 0.1)
 shape = SubResource("CapsuleShape2D_xgplg")
 
 [node name="CollisionBox" type="CollisionShape2D" parent="."]

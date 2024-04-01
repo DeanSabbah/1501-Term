@@ -8,9 +8,8 @@ radius = 9.0
 height = 28.0
 
 [node name="Projectile" type="Area2D"]
-top_level = true
 script = ExtResource("1_74yon")
-speed = 50
+speed = 1200
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1

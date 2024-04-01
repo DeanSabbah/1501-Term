@@ -57,7 +57,7 @@ func _physics_process(delta):
 	
 
 func _on_hit_box_area_entered(area):
-	if area is Projectile:
+	if area is Projectile and !(area is Enemy_Projectile):
 		print("AREA DAMAGE: ", area.damage)
 		take_damage(area.damage)
 		area.queue_free()
