@@ -165,6 +165,7 @@ scale = Vector2(3, 3)
 script = ExtResource("1_4q1n4")
 speed = 400
 jump_strength = -500
+health = 100
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 3
@@ -194,3 +195,5 @@ polygon = PackedVector2Array(-4.33333, 8.33333, -7.33333, 6.33333, -7.33333, -0.
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-4, 10, -7, 8, -7, 1, -6, 0, 6, 0, 7, 1, 7, 8.33333, 4, 10, 4, 13, 1.33333, 16, -1, 16, -4, 13)
+
+[connection signal="area_entered" from="HitBoxArea" to="." method="_on_hit_box_area_entered"]

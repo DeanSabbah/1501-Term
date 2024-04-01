@@ -7,7 +7,7 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	
 func _process(delt):
-	var player_pos = get_parent().get_player_position()
+	var player_pos = get_parent().position
 	var mouse_pos = get_global_mouse_position()
 	var direction = (mouse_pos - player_pos).normalized()
 	var crosshair_position = player_pos + direction * crosshair_distance

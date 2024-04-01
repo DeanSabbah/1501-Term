@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @export var speed:int
 @export var jump_strength:int # Adjusted for a more noticeable jump
+@export var health:int
 
 var gravity = 20
 var mouse_position = get_global_mouse_position()
@@ -76,12 +77,23 @@ func _input(event):
 			projectile.damage = 10
 			get_parent().add_child(projectile)
 
-func get_player_position():
-	return position
+func _on_hit_box_area_entered(area):
+	if area is Enemy_Projectile:
+		print("AREA DAMAGE: ", area.damage)
+		take_damage(area.damage)
+		area.queue_free()
 
-func get_player_velocity():
-	return velocity
+func take_damage(amount: int):
+	health -= amount
+	print("PLAYER HEALTH ", health)
+	if (health <= 0):
+		die()
 
+func die():
+	$CollisionBox.set_deferred("disabled", true)
+	#animation_node.play("death")
+	#await get_tree().create_timer(0.8).timeout
+	get_tree().quit()
 
 func give_xp(xp_in):
 	xp += xp_in
