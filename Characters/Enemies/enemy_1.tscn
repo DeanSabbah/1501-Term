@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://ckiadpp57mdd"]
 
 [ext_resource type="Script" path="res://Characters/Enemies/enemy 1.gd" id="1_jv4dg"]
-[ext_resource type="Texture2D" uid="uid://bev16cqp8a4sv" path="res://assests/temp prototpye/Totaly an enemy.png" id="1_pc6ts"]
+[ext_resource type="Texture2D" uid="uid://bqs565xd02gpv" path="res://Characters/Enemies/enemies x3.png" id="2_xtq4a"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gs0i5"]
 
@@ -19,26 +19,30 @@ speed = 50
 maxHealth = 10
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("1_pc6ts")
+texture_filter = 1
+scale = Vector2(1.97488, 1.09852)
+texture = ExtResource("2_xtq4a")
+hframes = 9
+vframes = 6
 
 [node name="Cooldown" type="Timer" parent="."]
 
 [node name="AttackRange" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
-scale = Vector2(1.55261, 1)
+scale = Vector2(44.5621, -26.9816)
 shape = SubResource("CircleShape2D_gs0i5")
 
 [node name="ViewRange" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ViewRange"]
-scale = Vector2(1.55261, 1)
+scale = Vector2(68.6583, 40.4738)
 shape = SubResource("CircleShape2D_ys0pc")
 
 [node name="HitBox" type="Area2D" parent="."]
 
 [node name="HitBox" type="CollisionShape2D" parent="HitBox"]
+scale = Vector2(0.714077, 0.429233)
 shape = SubResource("CircleShape2D_h5u0i")
 
 [node name="CollisionBox" type="CollisionShape2D" parent="."]
