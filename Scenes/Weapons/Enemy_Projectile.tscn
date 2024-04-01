@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://diobynr7u1h5p"]
 
 [ext_resource type="Script" path="res://Scenes/Weapons/Enemy_Projectile.gd" id="1_74yon"]
-[ext_resource type="Texture2D" uid="uid://fdspegldb3cr" path="res://assests/projectiles/enemy1 projectile image.png" id="2_mnxiw"]
+[ext_resource type="Texture2D" uid="uid://celo4ieoifpel" path="res://assests/projectiles/enemy1 projectile image.png" id="2_mnxiw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1tyln"]
 radius = 9.0
@@ -9,7 +9,7 @@ height = 28.0
 
 [node name="Projectile" type="Area2D"]
 script = ExtResource("1_74yon")
-speed = null
+speed = 1200
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1

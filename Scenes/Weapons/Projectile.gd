@@ -1,13 +1,13 @@
 class_name Projectile extends Area2D
 
-@export var speed:int = 4000
-var direction = Vector2.ZERO # Initialized to a zero vector
+@export var speed:int
+
+var direction:Vector2
 var damage:int
 
 @onready var player = get_node("/root/Main/player")
 
 func _ready():
-	print(player)
 	direction = player.get_node("Crosshair").get_direction()
 	self.position = player.position
 	self.rotation = direction.angle()

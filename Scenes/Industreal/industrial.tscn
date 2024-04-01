@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://daldw1xjcaax0"]
 
-[ext_resource type="Texture2D" uid="uid://bjmewcyhxwnmg" path="res://assests/Tiles.png" id="1_ukvhd"]
+[ext_resource type="Texture2D" uid="uid://bjmewcyhxwnmg" path="res://assests/Industrial/Tiles.png" id="1_ukvhd"]
 [ext_resource type="Texture2D" uid="uid://cv0my310cbfcp" path="res://assests/Industrial/3 Objects/1.png" id="2_shhvq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k45l0"]

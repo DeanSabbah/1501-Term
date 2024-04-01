@@ -1,8 +1,8 @@
 [gd_scene load_steps=27 format=3 uid="uid://tas2bojqxb7t"]
 
 [ext_resource type="Script" path="res://Characters/Player/player.gd" id="1_4q1n4"]
-[ext_resource type="Texture2D" uid="uid://b04vsueegjiys" path="res://assests/players_blue_x1.png" id="1_uftsh"]
-[ext_resource type="Texture2D" uid="uid://br67n8h76kj8u" path="res://assests/players_blue_x1_LEFT.png" id="3_v8uq1"]
+[ext_resource type="Texture2D" uid="uid://drunbm6xp4hae" path="res://assests/players_blue_x1.png" id="1_uftsh"]
+[ext_resource type="Texture2D" uid="uid://cmayqs042xudm" path="res://assests/players_blue_x1_LEFT.png" id="3_v8uq1"]
 [ext_resource type="Script" path="res://Characters/Player/Camera2D.gd" id="4_nw101"]
 [ext_resource type="PackedScene" uid="uid://5gmboch00q36" path="res://Characters/Player/Crosshair.tscn" id="5_0b8xh"]
 [ext_resource type="PackedScene" uid="uid://bkymt1bsid8is" path="res://Scenes/HUD/hud.tscn" id="5_mkg5g"]
@@ -165,6 +165,7 @@ scale = Vector2(3, 3)
 script = ExtResource("1_4q1n4")
 speed = 400
 jump_strength = -500
+health = 100
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 3
@@ -194,3 +195,5 @@ polygon = PackedVector2Array(-4.33333, 8.33333, -7.33333, 6.33333, -7.33333, -0.
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-4, 10, -7, 8, -7, 1, -6, 0, 6, 0, 7, 1, 7, 8.33333, 4, 10, 4, 13, 1.33333, 16, -1, 16, -4, 13)
+
+[connection signal="area_entered" from="HitBoxArea" to="." method="_on_hit_box_area_entered"]
