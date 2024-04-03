@@ -130,6 +130,9 @@ libraries = {
 "": SubResource("AnimationLibrary_m0jbd")
 }
 
+[node name="RayCast2D" type="RayCast2D" parent="."]
+collide_with_areas = true
+
 [connection signal="body_entered" from="AttackRange" to="." method="_on_attack_range_body_entered"]
 [connection signal="body_exited" from="AttackRange" to="." method="_on_attack_range_body_exited"]
 [connection signal="body_entered" from="ViewRange" to="." method="_on_viewRange_body_entered"]

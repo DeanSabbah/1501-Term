@@ -56,6 +56,46 @@ func _physics_process(delta):
 		animation_node.play("idle")
 	
 
+
+	if (player.position.x < position.x):
+		$Sprite2D.flip_h = true
+	else:
+		$Sprite2D.flip_h = false
+
+	
+	# if ($RayCast2D.get_collider() == player):
+	# 	print("player detected")
+	# 	var motion = Vector2()
+	# 	position += (player.position - position)/50
+	# 	move_and_collide(motion)
+	# var direction_to_player = position.direction_to(player.position)
+	# var RayCast2d = $RayCast2D
+	# RayCast2d.set_target_position(direction_to_player)
+	#$RayCast2D.cast_to = direction_to_player * viewRange
+
+	$RayCast2D.target_position = player.position - position
+	$RayCast2D.force_raycast_update()
+
+	if $RayCast2D.is_colliding():
+		
+		var collider = $RayCast2D.get_collider()
+		
+		if (collider == player):
+			print("collider is player")
+			var motion = Vector2()
+			position += (player.position - position)/50
+			move_and_collide(motion)
+
+	"""
+	if $RayCast2D.is_colliding():
+		print($RayCast2D.rotation)
+		var collider = $RayCast2D.get_collider()
+		if collider == player:
+
+"""
+
+
+
 func _on_hit_box_area_entered(area):
 	if area is Projectile and !(area is Enemy_Projectile):
 		print("AREA DAMAGE: ", area.damage)

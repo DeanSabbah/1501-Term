@@ -85,7 +85,7 @@ func _on_hit_box_area_entered(area):
 
 func take_damage(amount: int):
 	health -= amount
-	print("PLAYER HEALTH ", health)
+	print("PLAYER HEALTH: ", health)
 	if (health <= 0):
 		die()
 
@@ -93,7 +93,9 @@ func die():
 	$CollisionBox.set_deferred("disabled", true)
 	#animation_node.play("death")
 	#await get_tree().create_timer(0.8).timeout
+	#_____________________
 	get_tree().quit()
+	#_____________________
 
 func give_xp(xp_in):
 	xp += xp_in
