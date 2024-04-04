@@ -81,7 +81,6 @@ func _physics_process(delta):
 		var collider = $RayCast2D.get_collider()
 		
 		if (collider == player):
-			print("collider is player")
 			var motion = Vector2()
 			position += (player.position - position)/50
 			move_and_collide(motion)
