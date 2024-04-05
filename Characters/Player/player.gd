@@ -15,8 +15,8 @@ var xp:int = 0
 var level:int = 1
 var nextLevel:int = 50
 var health_multiplier:float = 1.1
-var original_ammo = ammo
-
+var original_ammo:int = 0
+var ammo_difference = 0
 signal leveled_up(level, nextLevel:int, xp:int)
 signal got_xp(xp:int)
 signal health_changed(health)
@@ -86,7 +86,7 @@ func _input(event):
 			var projectile = projectileScene.instantiate()
 			projectile.damage = 10
 			ammo -= 1
-
+			ammo_difference += 1
 			if (ammo <= 0):
 				print("OUT OF AMMO!!!, MUST RELOAD")
 				reloaded = !reloaded
@@ -137,7 +137,13 @@ func level_up():
 	leveled_up.emit(level, nextLevel, xp)
 
 func reset_ammo():
-	print("RESETING AMMO")
+	#print("RESETING AMMO")
 	reloaded = true
+	print("original ammo after reset: ", ammo)
+	print("ORIGINAL AMMO:")
+	original_ammo = ammo + ammo_difference
+	print(original_ammo)
 	ammo = original_ammo
+	print("ammo after: ", ammo)
+	ammo_difference = 0
 	hud.reset_ammo()

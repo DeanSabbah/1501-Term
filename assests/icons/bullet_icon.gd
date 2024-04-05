@@ -1,18 +1,17 @@
 extends Area2D
 @onready var player = self.get_parent().get_node("player")
-
-
-# Called when the node enters the scene tree for the first time.
+@onready var player_hitbox = player.get_node("HitBoxArea")
+@onready var animation_node = get_node("AnimationPlayer")
 func _ready():
-	print(player)
+	animation_node.play("idle")
 	pass
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
 
 func _on_area_entered(area:Area2D):
-	player.reset_ammo()
-	pass
+	if (area == player_hitbox):
+		player.reset_ammo()
+		queue_free()

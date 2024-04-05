@@ -6,6 +6,9 @@ extends CanvasLayer
 @onready var ammo_bar = $ammoBar
 @onready var player = self.get_parent().get_parent()
 @onready var player_original_ammo = player.ammo
+@onready var ammo_label = $ammoLabel
+
+
 func _ready():
 	
 	progress_bar.value = 0
@@ -18,6 +21,8 @@ func _ready():
 	
 	ammo_bar.min_value = 0
 	ammo_bar.max_value = player_original_ammo
+	ammo_label.text = str(player_original_ammo)
+	#ammo_label.update_label_text()
 	#ammo_bar.max_value = player_original_ammo
 
 
@@ -34,6 +39,9 @@ func set_ammo(ammo_count: int):
 
 	#ammo_bar.max_value = ammo_count
 	ammo_bar.value = ammo_count
+	ammo_label.text = str(ammo_count) + "/ " + str(player_original_ammo)
+	if (ammo_count == 0):
+		ammo_label.text = "MUST RELOAD!!"
 	print("ammo count: ", ammo_bar.value)
 
 
@@ -46,3 +54,7 @@ func level_up(level:int, nextLevel:int, xp:int):
 
 func reset_ammo():
 	ammo_bar.value = player_original_ammo
+	ammo_bar.min_value = 0
+	ammo_bar.max_value = player_original_ammo
+	ammo_label.text = str(player_original_ammo) + "/ " + str(player_original_ammo)
+	
