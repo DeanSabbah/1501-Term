@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://ovvfd4ixoib5"]
+
+[ext_resource type="Texture2D" uid="uid://iglgurwnfae0" path="res://assests/projectiles/enemy2 projectile image.png" id="2_bxqh2"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bq3l5"]
+radius = 3.53553
+height = 16.9706
+
+[node name="Area2D" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+rotation = -1.5708
+scale = Vector2(0.045, 0.049)
+texture = ExtResource("2_bxqh2")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(1, 0)
+scale = Vector2(2, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = -0.785398
+shape = SubResource("CapsuleShape2D_bq3l5")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

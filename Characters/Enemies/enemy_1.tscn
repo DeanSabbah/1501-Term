@@ -107,6 +107,7 @@ one_shot = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
 position = Vector2(3, -14)
 shape = SubResource("CircleShape2D_bkv88")
+debug_color = Color(0.772549, 0.313726, 0.796078, 0.419608)
 
 [node name="ViewRange" type="Area2D" parent="."]
 

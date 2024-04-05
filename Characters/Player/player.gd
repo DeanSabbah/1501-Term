@@ -1,21 +1,26 @@
 extends CharacterBody2D
 
 @export var speed:int
-@export var jump_strength:int # Adjusted for a more noticeable jump
+@export var jump_strength:int 
 @export var health:int
+@export var ammo:int
+@onready var hud = $Camera2D/HUD
+@onready var reloaded = true
 
 var gravity = 20
 var mouse_position = get_global_mouse_position()
 var projectileScene = preload("res://Scenes/Weapons/Projectile.tscn")
+#var progressbar = preload("res://Scenes/HUD/hud.tscn")
 var xp:int = 0
 var level:int = 1
 var nextLevel:int = 50
-
-@onready var hud = $Camera2D/HUD
+var health_multiplier:float = 1.1
+var original_ammo = ammo
 
 signal leveled_up(level, nextLevel:int, xp:int)
 signal got_xp(xp:int)
 signal health_changed(health)
+signal ammo_changed(ammo)
 
 func _ready():
 	leveled_up.connect(hud.level_up)
@@ -23,6 +28,8 @@ func _ready():
 	leveled_up.emit(level, nextLevel, xp)
 	health_changed.connect(hud.set_health)
 	health_changed.emit(health)
+	
+
 
 func _physics_process(delta):
 	var input_direction = Input.get_vector("left", "right", "up", "down")
@@ -74,10 +81,19 @@ func update_animations():
 
 
 func _input(event):
-	if event is InputEventMouseButton:
+	if event is InputEventMouseButton and reloaded:
 		if (event.button_index == MOUSE_BUTTON_LEFT and event.pressed):
 			var projectile = projectileScene.instantiate()
 			projectile.damage = 10
+			ammo -= 1
+
+			if (ammo <= 0):
+				print("OUT OF AMMO!!!, MUST RELOAD")
+				reloaded = !reloaded
+				
+			ammo_changed.connect(hud.set_ammo)
+			ammo_changed.emit(ammo)
+
 			get_parent().add_child(projectile)
 
 func _on_hit_box_area_entered(area):
@@ -109,6 +125,10 @@ func give_xp(xp_in):
 		level_up()
 
 func level_up():
+	health = round(100 * health_multiplier)
+	health_multiplier += 0.1
+	print("MAX HEALTH IS:", health)
+	health_changed.emit(health)	
 	level += 1
 	nextLevel = ceil(nextLevel * 1.5)
 	print("YOU LEVELED UP TO: ", level)
@@ -116,3 +136,8 @@ func level_up():
 	print("---------------------------")
 	leveled_up.emit(level, nextLevel, xp)
 
+func reset_ammo():
+	print("RESETING AMMO")
+	reloaded = true
+	ammo = original_ammo
+	hud.reset_ammo()

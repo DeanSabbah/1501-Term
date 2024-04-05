@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bkymt1bsid8is"]
+[gd_scene load_steps=3 format=3 uid="uid://bkymt1bsid8is"]
 
 [ext_resource type="Script" path="res://Scenes/HUD/HUD.gd" id="1_qsyn8"]
+[ext_resource type="Texture2D" uid="uid://bnkk3qms68fg0" path="res://Scenes/HUD/REAL_AMMO.png" id="3_cboyq"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_qsyn8")
@@ -39,3 +40,16 @@ offset_right = -10.0
 offset_bottom = 29.0
 text = "Health"
 horizontal_alignment = 2
+
+[node name="ammoBar" type="TextureProgressBar" parent="."]
+z_index = 5
+texture_filter = 5
+offset_left = 585.0
+offset_top = 560.0
+offset_right = 835.0
+offset_bottom = 1140.0
+rotation = 1.5708
+scale = Vector2(0.699, 1)
+fill_mode = 3
+texture_progress = ExtResource("3_cboyq")
+tint_progress = Color(0.917647, 0.803922, 0.768627, 1)

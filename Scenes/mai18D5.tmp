@@ -1,12 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://d2nqgkuy516bs"]
+[gd_scene load_steps=7 format=3 uid="uid://d2nqgkuy516bs"]
 
 [ext_resource type="PackedScene" uid="uid://tas2bojqxb7t" path="res://Characters/Player/player.tscn" id="1_ckd8x"]
 [ext_resource type="PackedScene" uid="uid://daldw1xjcaax0" path="res://Scenes/Industreal/industrial.tscn" id="2_7u5y1"]
 [ext_resource type="PackedScene" uid="uid://bngribl2qaldw" path="res://Scenes/Power Station/power_station.tscn" id="2_k11w8"]
 [ext_resource type="PackedScene" uid="uid://u1k6e3tmgfm1" path="res://Scenes/Exclusion/exclusion.tscn" id="3_k1ohe"]
 [ext_resource type="PackedScene" uid="uid://ckiadpp57mdd" path="res://Characters/Enemies/enemy_1.tscn" id="4_tcces"]
-[ext_resource type="PackedScene" uid="uid://dxvdtdeg8vpya" path="res://Characters/Enemies/enemy_2.tscn" id="6_mkb33"]
-[ext_resource type="PackedScene" uid="uid://6q678lltthm5" path="res://assests/icons/bullet_icon.tscn" id="7_qs7c6"]
+[ext_resource type="PackedScene" uid="uid://dxvdtdeg8vpya" path="res://Characters/Enemies/Enemy 2/enemy_2.tscn" id="6_mkb33"]
 
 [node name="Main" type="Node2D"]
 
@@ -22,7 +21,6 @@ position = Vector2(2489, 30)
 visibility_layer = 5
 z_index = 3
 position = Vector2(3727, 439)
-ammo = 25
 
 [node name="Enemy 1" parent="." instance=ExtResource("4_tcces")]
 position = Vector2(815, 569)
@@ -101,6 +99,3 @@ metadata/_edit_lock_ = true
 
 [node name="2_Enemy 2 17" parent="." instance=ExtResource("6_mkb33")]
 position = Vector2(3634, 453)
-
-[node name="Bullet_Icon" parent="." instance=ExtResource("7_qs7c6")]
-position = Vector2(3822, 456)

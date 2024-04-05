@@ -3,7 +3,7 @@ signal death_anim2
 
 
 
-var projectileScene = preload("res://Scenes/Weapons/Enemy_Projectile.tscn")
+var projectileScene = preload("res://Scenes/Weapons/Enemey_Porjectile2.tscn")
 
 func attack():
 	print("ENEMY_2 ATTACKING PLAYER")

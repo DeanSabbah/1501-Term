@@ -165,6 +165,7 @@ script = ExtResource("1_4q1n4")
 speed = 400
 jump_strength = -500
 health = 100
+ammo = 5
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 3
@@ -184,6 +185,7 @@ script = ExtResource("4_nw101")
 [node name="HUD" parent="Camera2D" instance=ExtResource("5_mkg5g")]
 
 [node name="Crosshair" parent="." instance=ExtResource("5_0b8xh")]
+z_index = 4
 scale = Vector2(-0.0615565, 0.0590391)
 
 [node name="HitBoxArea" type="Area2D" parent="."]

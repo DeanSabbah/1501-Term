@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://6q678lltthm5"]
+
+[ext_resource type="Script" path="res://assests/icons/bullet_icon.gd" id="1_4akr7"]
+[ext_resource type="Texture2D" uid="uid://cdlpanu1pynes" path="res://assests/ICONS_IMPORT/1 Icons/12/Skillicon12_22.png" id="1_tx3yo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tqaxd"]
+size = Vector2(30, 30)
+
+[node name="Bullet_Icon" type="Area2D"]
+script = ExtResource("1_4akr7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_tx3yo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_tqaxd")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
