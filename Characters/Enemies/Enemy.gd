@@ -1,9 +1,10 @@
 class_name Enemy extends CharacterBody2D
 
-@onready var player = get_node("/root/Main/player")
+@onready var player:Player = get_node("/root/Main/player")
 @onready var cooldownTimer = $Cooldown
 @onready var animation_node = get_node("AnimationPlayer")
 @onready var death_animation_node = get_node("Death anim")
+@onready var collider = $RayCast2D
 
 @export var attackRange:int
 @export var viewRange:int
@@ -14,7 +15,7 @@ class_name Enemy extends CharacterBody2D
 @export var cooldown:float
 
 var health:int = maxHealth
-var inside:bool
+var inView:bool
 var inRange:bool
 var dying:bool = false
 
@@ -39,11 +40,11 @@ func on_death():
 
 func _on_viewRange_body_entered(body:Node2D):
 	if body == player:
-		inside = true
+		inView = true
 
 func _on_viewRange_body_exited(body:Node2D):
 	if body == player:
-		inside = false
+		inView = false
 
 func _on_attack_range_body_entered(body:Node2D):
 	if body == player:
@@ -53,57 +54,37 @@ func _on_attack_range_body_exited(body:Node2D):
 	if body == player:
 		inRange = false
 
-func _physics_process(delta):
+func _process(delta):	
 	if cooldownTimer.is_stopped() and inRange and !dying:
 		animation_node.stop()
 		attack()
 	elif !animation_node.is_playing() and !dying:
 		animation_node.play("idle")
 	
-
-
 	if (player.position.x < position.x):
 		$Sprite2D.flip_h = true
 	else:
 		$Sprite2D.flip_h = false
-
-
 	
-	# if ($RayCast2D.get_collider() == player):
-	# 	print("player detected")
-	# 	var motion = Vector2()
-	# 	position += (player.position - position)/50
-	# 	move_and_collide(motion)
-	# var direction_to_player = position.direction_to(player.position)
-	# var RayCast2d = $RayCast2D
-	# RayCast2d.set_target_position(direction_to_player)
-	#$RayCast2D.cast_to = direction_to_player * viewRange
+	collider.target_position = player.position - position
+	### TODO: ADD RAYCASTING SUPPORT ###
+	#if(collider.get_collider() == player and inView):
+	if inView:
+		print("here")
+		velocity = (player.position - position).normalized() * speed * delta * 60
+	elif(!inView):
+		velocity = Vector2.ZERO
+	# elif(inView):
+	# 	velocity = (player.position - position).normalized() * speed * delta
+	move_and_slide()
 
-	$RayCast2D.target_position = player.position - position
-	$RayCast2D.force_raycast_update()
-
-	if $RayCast2D.is_colliding():
-		
-		var collider = $RayCast2D.get_collider()
-		
-		if (collider == player):
-			var motion = Vector2()
-			position += (player.position - position)/50
-			move_and_collide(motion)
-
-	"""
-	if $RayCast2D.is_colliding():
-		print($RayCast2D.rotation)
-		var collider = $RayCast2D.get_collider()
-		if collider == player:
-
-"""
+#func _physics_process(delta):
 
 
 
 func _on_hit_box_area_entered(area):
 	if area is Projectile and !(area is Enemy_Projectile):
-		print("AREA DAMAGE: ", area.damage)
+		#print("AREA DAMAGE: ", area.damage)
 		take_damage(area.damage)
 		area.queue_free()
 

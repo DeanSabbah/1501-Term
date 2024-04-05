@@ -1,4 +1,5 @@
-extends Enemy;
+extends Enemy
+
 signal death_anim
 
 var projectileScene = preload("res://Scenes/Weapons/Enemy_Projectile.tscn")
