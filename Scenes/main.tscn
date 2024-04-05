@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://d2nqgkuy516bs"]
+[gd_scene load_steps=7 format=3 uid="uid://d2nqgkuy516bs"]
 
 [ext_resource type="PackedScene" uid="uid://tas2bojqxb7t" path="res://Characters/Player/player.tscn" id="1_ckd8x"]
 [ext_resource type="PackedScene" uid="uid://daldw1xjcaax0" path="res://Scenes/Industreal/industrial.tscn" id="2_7u5y1"]
-[ext_resource type="PackedScene" uid="uid://bngribl2qaldw" path="res://power_station.tscn" id="2_k11w8"]
+[ext_resource type="PackedScene" uid="uid://bngribl2qaldw" path="res://Scenes/Power Station/power_station.tscn" id="2_k11w8"]
 [ext_resource type="PackedScene" uid="uid://u1k6e3tmgfm1" path="res://Scenes/Exclusion/exclusion.tscn" id="3_k1ohe"]
 [ext_resource type="PackedScene" uid="uid://ckiadpp57mdd" path="res://Characters/Enemies/enemy_1.tscn" id="4_tcces"]
+[ext_resource type="PackedScene" uid="uid://dxvdtdeg8vpya" path="res://Characters/Enemies/Enemy 2/enemy_2.tscn" id="6_mkb33"]
 
 [node name="Main" type="Node2D"]
 
@@ -53,6 +54,38 @@ expDrop = 20
 position = Vector2(2362, 781)
 expDrop = 20
 
+[node name="Enemy 9" parent="." instance=ExtResource("4_tcces")]
+position = Vector2(2942, 955)
+expDrop = 20
+
+[node name="Enemy 10" parent="." instance=ExtResource("4_tcces")]
+position = Vector2(3513, 740)
+expDrop = 20
+
+[node name="Enemy 11" parent="." instance=ExtResource("4_tcces")]
+position = Vector2(4421, 954)
+expDrop = 20
+
+[node name="Enemy 12" parent="." instance=ExtResource("4_tcces")]
+position = Vector2(4945, 449)
+expDrop = 20
+
+[node name="Enemy 13" parent="." instance=ExtResource("4_tcces")]
+position = Vector2(4300, 442)
+expDrop = 20
+
+[node name="Enemy 14" parent="." instance=ExtResource("4_tcces")]
+position = Vector2(5417, 947)
+expDrop = 20
+
+[node name="Enemy 15" parent="." instance=ExtResource("4_tcces")]
+position = Vector2(5488, 447)
+expDrop = 20
+
+[node name="Enemy 16" parent="." instance=ExtResource("4_tcces")]
+position = Vector2(5029, 962)
+expDrop = 20
+
 [node name="BLACK BACKGROUND" type="ColorRect" parent="."]
 z_index = -5
 offset_left = -1533.0
@@ -63,3 +96,6 @@ scale = Vector2(305.382, 125.784)
 size_flags_horizontal = 3
 color = Color(0, 0, 0, 1)
 metadata/_edit_lock_ = true
+
+[node name="Enemy 2 17" parent="." instance=ExtResource("6_mkb33")]
+position = Vector2(3633, 477)
