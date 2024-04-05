@@ -105,43 +105,4 @@ metadata/_edit_lock_ = true
 position = Vector2(3634, 453)
 
 [node name="Bullet_Icon" parent="." instance=ExtResource("7_qs7c6")]
-position = Vector2(3840, 452)
-
-[node name="Bullet_Icon2" parent="." instance=ExtResource("7_qs7c6")]
-position = Vector2(4541, 447)
-
-[node name="Bullet_Icon3" parent="." instance=ExtResource("7_qs7c6")]
-position = Vector2(4812, 446)
-
-[node name="Bullet_Icon4" parent="." instance=ExtResource("7_qs7c6")]
-position = Vector2(3304, 956)
-
-[node name="Bullet_Icon5" parent="." instance=ExtResource("7_qs7c6")]
-position = Vector2(5431, 447)
-
-[node name="Bullet_Icon6" parent="." instance=ExtResource("7_qs7c6")]
-position = Vector2(4835, 835)
-
-[node name="Bullet_Icon7" parent="." instance=ExtResource("7_qs7c6")]
-position = Vector2(5123, 746)
-
-[node name="Bullet_Icon8" parent="." instance=ExtResource("7_qs7c6")]
-position = Vector2(3976, 968)
-
-[node name="Bullet_Icon9" parent="." instance=ExtResource("7_qs7c6")]
-position = Vector2(2368, 954)
-
-[node name="Bullet_Icon10" parent="." instance=ExtResource("7_qs7c6")]
-position = Vector2(2857, 511)
-
-[node name="Bullet_Icon11" parent="." instance=ExtResource("7_qs7c6")]
-position = Vector2(1482, 574)
-
-[node name="Bullet_Icon12" parent="." instance=ExtResource("7_qs7c6")]
-position = Vector2(634, 418)
-
-[node name="Bullet_Icon13" parent="." instance=ExtResource("7_qs7c6")]
-position = Vector2(373, 769)
-
-[node name="Bullet_Icon14" parent="." instance=ExtResource("7_qs7c6")]
-position = Vector2(865, 956)
+position = Vector2(3822, 456)

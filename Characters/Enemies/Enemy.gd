@@ -70,6 +70,7 @@ func _process(delta):
 	### TODO: ADD RAYCASTING SUPPORT ###
 	#if(collider.get_collider() == player and inView):
 	if inView:
+		print("here")
 		velocity = (player.position - position).normalized() * speed * delta * 60
 	elif(!inView):
 		velocity = Vector2.ZERO
@@ -83,6 +84,7 @@ func _process(delta):
 
 func _on_hit_box_area_entered(area):
 	if area is Projectile and !(area is Enemy_Projectile):
+		#print("AREA DAMAGE: ", area.damage)
 		take_damage(area.damage)
 		area.queue_free()
 
