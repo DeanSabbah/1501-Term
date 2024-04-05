@@ -3,6 +3,7 @@ class_name Enemy extends CharacterBody2D
 @onready var player = get_node("/root/Main/player")
 @onready var cooldownTimer = $Cooldown
 @onready var animation_node = get_node("AnimationPlayer")
+@onready var death_animation_node = get_node("Death anim")
 
 @export var attackRange:int
 @export var viewRange:int
@@ -25,6 +26,10 @@ func _ready():
 	$AttackRange/CollisionShape2D.shape.radius = attackRange
 	cooldownTimer.wait_time = cooldown
 	health = maxHealth
+	if is_instance_valid(death_animation_node):
+		
+		death_animation_node.hide()
+
 
 func attack():
 	pass
@@ -61,6 +66,7 @@ func _physics_process(delta):
 		$Sprite2D.flip_h = true
 	else:
 		$Sprite2D.flip_h = false
+
 
 	
 	# if ($RayCast2D.get_collider() == player):
@@ -111,6 +117,8 @@ func take_damage(amount: int):
 
 func die():
 	$CollisionBox.set_deferred("disabled", true)
+	if is_instance_valid(death_animation_node):
+		death_animation_node.show()
 	player.give_xp(expDrop)
 	dying = true
 	animation_node.play("death")
