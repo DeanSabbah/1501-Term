@@ -15,11 +15,14 @@ var nextLevel:int = 50
 
 signal leveled_up(level, nextLevel:int, xp:int)
 signal got_xp(xp:int)
+signal health_changed(health)
 
 func _ready():
 	leveled_up.connect(hud.level_up)
 	got_xp.connect(hud.set_xp)
 	leveled_up.emit(level, nextLevel, xp)
+	health_changed.connect(hud.set_health)
+	health_changed.emit(health)
 
 func _physics_process(delta):
 	var input_direction = Input.get_vector("left", "right", "up", "down")
@@ -86,6 +89,7 @@ func _on_hit_box_area_entered(area):
 func take_damage(amount: int):
 	health -= amount
 	print("PLAYER HEALTH: ", health)
+	health_changed.emit(health)
 	if (health <= 0):
 		die()
 

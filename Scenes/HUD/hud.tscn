@@ -24,3 +24,18 @@ offset_top = 11.0
 offset_right = -216.0
 offset_bottom = 34.0
 grow_horizontal = 0
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = 817.0
+offset_top = 44.0
+offset_right = 1144.0
+offset_bottom = 79.0
+
+[node name="Health" type="Label" parent="HealthBar"]
+layout_mode = 0
+offset_left = -122.0
+offset_top = 6.0
+offset_right = -10.0
+offset_bottom = 29.0
+text = "Health"
+horizontal_alignment = 2
