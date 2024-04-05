@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://d2nqgkuy516bs"]
+[gd_scene load_steps=9 format=3 uid="uid://d2nqgkuy516bs"]
 
 [ext_resource type="PackedScene" uid="uid://tas2bojqxb7t" path="res://Characters/Player/player.tscn" id="1_ckd8x"]
+[ext_resource type="Script" path="res://Scenes/main.gd" id="1_lekt5"]
 [ext_resource type="PackedScene" uid="uid://daldw1xjcaax0" path="res://Scenes/Industreal/industrial.tscn" id="2_7u5y1"]
 [ext_resource type="PackedScene" uid="uid://bngribl2qaldw" path="res://Scenes/Power Station/power_station.tscn" id="2_k11w8"]
 [ext_resource type="PackedScene" uid="uid://u1k6e3tmgfm1" path="res://Scenes/Exclusion/exclusion.tscn" id="3_k1ohe"]
@@ -9,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://6q678lltthm5" path="res://assests/icons/bullet_icon.tscn" id="7_qs7c6"]
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_lekt5")
 
 [node name="Industrial" parent="." instance=ExtResource("2_7u5y1")]
 
