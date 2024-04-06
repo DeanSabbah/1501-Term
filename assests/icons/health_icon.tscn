@@ -1,10 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://6q678lltthm5"]
+[gd_scene load_steps=7 format=3 uid="uid://bu34bv03olkng"]
 
-[ext_resource type="Script" path="res://assests/icons/bullet_icon.gd" id="1_4akr7"]
-[ext_resource type="Texture2D" uid="uid://hpny73aemvo0" path="res://assests/ICONS_IMPORT/REAL.png" id="2_suu12"]
+[ext_resource type="Script" path="res://assests/icons/health_icon.gd" id="1_sgqmv"]
+[ext_resource type="Texture2D" uid="uid://cvygtwfxo3pk4" path="res://assests/icons/Untitled_design__10_-removebg-preview.png" id="2_2smsj"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tqaxd"]
-size = Vector2(27, 28)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pwuka"]
+size = Vector2(28, 29)
 
 [sub_resource type="Animation" id="Animation_rmjve"]
 length = 0.001
@@ -44,18 +44,18 @@ _data = {
 "idle": SubResource("Animation_2b0tq")
 }
 
-[node name="Bullet_Icon" type="Area2D"]
-script = ExtResource("1_4akr7")
+[node name="health_icon" type="Area2D"]
+script = ExtResource("1_sgqmv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("2_suu12")
+texture = ExtResource("2_2smsj")
 hframes = 2
 frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, -1)
-shape = SubResource("RectangleShape2D_tqaxd")
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_pwuka")
 one_way_collision = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

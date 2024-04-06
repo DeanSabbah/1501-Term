@@ -4,23 +4,28 @@ class_name Player extends CharacterBody2D
 @export var jump_strength:int 
 @export var health:int
 @export var ammo:int
+@export var stamina_amount:int
 @onready var hud = $Camera2D/HUD
 @onready var reloaded = true
 
 var gravity = 20
 var mouse_position = get_global_mouse_position()
 var projectileScene = preload("res://Scenes/Weapons/Projectile.tscn")
-#var progressbar = preload("res://Scenes/HUD/hud.tscn")
+var original_stamina: int
 var xp:int = 0
 var level:int = 1
 var nextLevel:int = 50
 var health_multiplier:float = 1.1
 var original_ammo:int = 0
 var ammo_difference = 0
+var original_health:int = 0
+
 signal leveled_up(level, nextLevel:int, xp:int)
 signal got_xp(xp:int)
 signal health_changed(health)
 signal ammo_changed(ammo)
+signal stamina_changed(stamina_amount)
+signal health_icon(health)
 
 func _ready():
 	leveled_up.connect(hud.level_up)
@@ -28,7 +33,10 @@ func _ready():
 	leveled_up.emit(level, nextLevel, xp)
 	health_changed.connect(hud.set_health)
 	health_changed.emit(health)
-	
+	stamina_changed.connect(hud.on_stamina)
+	original_stamina = stamina_amount
+	health_icon.connect(hud.on_health)
+	health_icon.emit(health)
 
 
 func _physics_process(delta):
@@ -46,6 +54,10 @@ func _physics_process(delta):
 	
 	# Move the character
 	move_and_slide()
+
+
+	if (Input.is_action_pressed("shift") or (Input.is_action_just_released("shift"))):
+		stamina()
 
 func _process(delta):
 	pass
@@ -95,6 +107,9 @@ func _input(event):
 			ammo_changed.emit(ammo)
 
 			get_parent().add_child(projectile)
+	
+
+
 
 func _on_hit_box_area_entered(area):
 	if area is Enemy_Projectile:
@@ -137,7 +152,6 @@ func level_up():
 	leveled_up.emit(level, nextLevel, xp)
 
 func reset_ammo():
-	#print("RESETING AMMO")
 	reloaded = true
 	print("original ammo after reset: ", ammo)
 	print("ORIGINAL AMMO:")
@@ -147,3 +161,36 @@ func reset_ammo():
 	print("ammo after: ", ammo)
 	ammo_difference = 0
 	hud.reset_ammo()
+
+func stamina_boost(boost:bool):
+	if (boost == true):
+		if (jump_strength > -600):
+			jump_strength += -100
+			speed += 200
+	else:
+		if (jump_strength < -500):
+			jump_strength += 100
+			speed += -200
+
+func stamina():
+	if (stamina_amount > 0):
+		stamina_amount -= 1
+		stamina_changed.emit(stamina_amount)
+		#print("STAMINA: ", stamina_amount)
+		stamina_boost(true)
+		await get_tree().create_timer(0.5).timeout
+	else:
+		stamina_boost(false)
+
+func give_stamina():
+	print("original stamina: ", original_stamina)
+	stamina_amount = original_stamina
+	stamina_changed.emit(stamina_amount)
+
+func give_health():
+	print ("original health:", original_health)
+	if (health <= (health * 1.5)):
+		health *= 2
+	else:
+		health = original_health
+	health_icon.emit(health)

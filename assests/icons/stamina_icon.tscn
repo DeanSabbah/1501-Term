@@ -1,10 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://6q678lltthm5"]
+[gd_scene load_steps=7 format=3 uid="uid://bidjfbml41sce"]
 
-[ext_resource type="Script" path="res://assests/icons/bullet_icon.gd" id="1_4akr7"]
-[ext_resource type="Texture2D" uid="uid://hpny73aemvo0" path="res://assests/ICONS_IMPORT/REAL.png" id="2_suu12"]
+[ext_resource type="Script" path="res://assests/icons/stamina_icon.gd" id="1_o3ijs"]
+[ext_resource type="Texture2D" uid="uid://q6il7cp7j18i" path="res://assests/icons/SPRINT_ICON.png" id="1_x5ibe"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tqaxd"]
-size = Vector2(27, 28)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ys2al"]
+size = Vector2(28, 29)
 
 [sub_resource type="Animation" id="Animation_rmjve"]
 length = 0.001
@@ -44,18 +44,18 @@ _data = {
 "idle": SubResource("Animation_2b0tq")
 }
 
-[node name="Bullet_Icon" type="Area2D"]
-script = ExtResource("1_4akr7")
+[node name="stamina_icon" type="Area2D"]
+script = ExtResource("1_o3ijs")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("2_suu12")
+texture = ExtResource("1_x5ibe")
 hframes = 2
 frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, -1)
-shape = SubResource("RectangleShape2D_tqaxd")
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_ys2al")
 one_way_collision = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
