@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://d2nqgkuy516bs"]
+[gd_scene load_steps=11 format=3 uid="uid://d2nqgkuy516bs"]
 
 [ext_resource type="PackedScene" uid="uid://tas2bojqxb7t" path="res://Characters/Player/player.tscn" id="1_ckd8x"]
 [ext_resource type="PackedScene" uid="uid://daldw1xjcaax0" path="res://Scenes/Industreal/industrial.tscn" id="2_7u5y1"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://6q678lltthm5" path="res://assests/icons/bullet_icon.tscn" id="7_qs7c6"]
 [ext_resource type="PackedScene" uid="uid://bidjfbml41sce" path="res://assests/icons/stamina_icon.tscn" id="8_ebuph"]
 [ext_resource type="PackedScene" uid="uid://bu34bv03olkng" path="res://assests/icons/health_icon.tscn" id="9_kloyo"]
+[ext_resource type="PackedScene" uid="uid://vrrafn2qrmw" path="res://pausemanager.tscn" id="10_hc6on"]
 
 [node name="Main" type="Node2D"]
 
@@ -191,3 +192,5 @@ position = Vector2(3891, 454)
 
 [node name="stamina_icon15" parent="." instance=ExtResource("8_ebuph")]
 position = Vector2(3963, 449)
+
+[node name="pausemanager" parent="." instance=ExtResource("10_hc6on")]
