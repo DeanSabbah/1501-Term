@@ -85,10 +85,10 @@ _data = {
 
 [node name="Enemy 1" type="CharacterBody2D"]
 script = ExtResource("1_jv4dg")
-attackRange = 125
-viewRange = 300
+attackRange = 225
+viewRange = 200
 attackDamage = 10
-speed = 200
+speed = 100
 maxHealth = 50
 expDrop = 50
 cooldown = 0.4

@@ -11,6 +11,7 @@ func _ready():
 	direction = player.get_node("Crosshair").get_direction()
 	self.position = player.position
 	self.rotation = direction.angle()
+	self.speed = 700
 
 func _process(delta):
 	self.position += direction * speed * delta

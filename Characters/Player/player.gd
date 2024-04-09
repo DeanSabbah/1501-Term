@@ -33,18 +33,6 @@ signal health_icon(health)
 signal died()
 
 func _ready():
-			#_____________________________
-	#original_health = health
-	#leveled_up.connect(hud.level_up)
-	#got_xp.connect(hud.set_xp)
-	#leveled_up.emit(level, nextLevel, xp)
-	#health_changed.connect(hud.set_health)
-	#health_changed.emit(health)
-	#stamina_changed.connect(hud.on_stamina)
-	#original_stamina = stamina_amount
-	#health_icon.connect(hud.on_health)
-	#health_icon.emit(health)
-		#_____________________________
 	leveled_up.connect(hud.level_up)
 	got_xp.connect(hud.set_xp)
 	leveled_up.emit(level, nextLevel, xp)
@@ -56,6 +44,7 @@ func _ready():
 	health_icon.emit(health)
 	original_ammo = ammo
 	original_stamina = stamina_amount
+	original_health = health
 
 func _physics_process(delta):
 	var input_direction = Input.get_vector("left", "right", "up", "down")
@@ -150,7 +139,6 @@ func _input(event):
 
 func _on_hit_box_area_entered(area):
 	if area is Enemy_Projectile:
-		print("AREA DAMAGE: ", area.damage)
 		take_damage(area.damage)
 		area.queue_free()
 
@@ -172,34 +160,25 @@ func die():
 	hide()
 	await get_tree().create_timer(1.1).timeout # wait 2.1 secs
 	$CollisionBox.set_deferred("disabled", true)
-	#animation_node.play("death")
-	#await get_tree().create_timer(0.8).timeout
-	# TODO: Better death handling
-	#_____________________
-	# get_tree().change_scene_to_file("res://scenes/credits/GodotCredits.tscn")
-	# get_tree().change_scene_to_file("res://scene/Start screen/start.tscn")
-	#_____________________
 	get_tree().paused = false
 	died.emit()
 
 func give_xp(xp_in):
 	xp += xp_in
-	print("PLAYER XP: ", xp)
 	got_xp.emit(xp)
 	while(xp >= nextLevel):
 		level_up()
 
 func level_up():
-	original_health = ceil(health*health_multiplier)
+	health = original_health
 	give_health()
-	health_multiplier += 0.1
-	print("MAX HEALTH IS:", health)
 	level += 1
 	nextLevel = ceil(nextLevel * 1.5)
+	leveled_up.emit(level, nextLevel, xp)
+	print("MAX HEALTH IS:", health)
 	print("YOU LEVELED UP TO: ", level)
 	print("NEXT LEVEL AT: ", nextLevel)
 	print("---------------------------")
-	leveled_up.emit(level, nextLevel, xp)
 
 func reset_ammo():
 	if (ammo == original_ammo):
@@ -207,11 +186,7 @@ func reset_ammo():
 	
 	get_node("/root/world/Reload").play()
 	reloaded = true
-	print("original ammo after reset: ", ammo)
-	print("ORIGINAL AMMO:")
 	ammo = original_ammo
-	#print(original_ammo)
-	print("ammo after: ", ammo)
 	ammo_difference = 0
 	hud.reset_ammo()
 
@@ -221,18 +196,6 @@ func give_stamina():
 	stamina_changed.emit(stamina_amount)
 
 func give_health():
-		#_____________________________
-	#print ("original health:", original_health)
-	#health = original_health
-	#health_icon.emit(health)
-	#_____________________________
-	
-
-	print ("original health:", original_health)
-	if (health <= (health * 1.5)):
-		health *= 2
-	else:
-		health = original_health
 	health_icon.emit(health)
 
 

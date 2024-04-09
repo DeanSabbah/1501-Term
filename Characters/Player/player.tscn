@@ -214,7 +214,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r00jw"]
-size = Vector2(21.3667, 17.8068)
+size = Vector2(20.3955, 23.9707)
 
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(2.37486, 2.20541)
@@ -231,7 +231,7 @@ animation = &"death"
 autoplay = "idle_left"
 
 [node name="CollisionBox" type="CollisionShape2D" parent="."]
-position = Vector2(0.421078, 8.16175)
+position = Vector2(0.210539, 7.93503)
 scale = Vector2(0.433558, 0.662062)
 shape = SubResource("RectangleShape2D_r00jw")
 
@@ -250,10 +250,10 @@ position = Vector2(0.333333, 1.66667)
 [node name="Hitbox" type="CollisionPolygon2D" parent="HitBoxArea"]
 position = Vector2(9.53674e-07, 3.2486)
 scale = Vector2(1, 0.830212)
-polygon = PackedVector2Array(-4.33333, 8.33333, -7.33333, 6.33333, -7.33333, -0.66667, -6.33333, -1.66667, 5.66667, -1.66667, 6.66667, -0.66667, 6.66667, 6.66666, 3.66667, 8.33333, 3.66667, 11.3333, 1, 14.3333, -1.33333, 14.3333, -4.33333, 11.3333)
+polygon = PackedVector2Array(-7.49165, -3.73585, -6.22842, -5.9205, 5.14067, -5.9205, 6.40391, -3.73585, 10.6147, -3.73585, 10.6147, 0.087285, 4.7196, 0.087285, 4.7196, 11.0105, 2.61421, 11.0105, -0.333334, 13.1952, -3.28088, 11.0105, -4.54411, 11.0105, -4.54411, 0.087285, -12.1235, 0.087285, -12.1235, -3.73585)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-3.7897, 13.6029, -4.21078, 7.70832, -4.21078, 2.26715, -3.36862, 1.81372, 3.7897, 2.26715, 5.89509, 2.72058, 5.89509, 8.16175, 5.05293, 12.2426, 4.33333, 15.3333, 1.33333, 16, -1.26323, 15.8701, -4, 15)
+polygon = PackedVector2Array(-3.7897, 13.6029, -4.21077, 4.98773, -4.21077, 0, -3.36862, 0, 3.36862, 0, 5.05293, 0, 5.05293, 8.16175, 5.05293, 14.0563, 2.94754, 14.0563, 0, 15.8701, -1.26323, 14.9632, -2.94754, 14.0563)
 
 [node name="Death" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_v71gc")

@@ -32,12 +32,8 @@ func _ready():
 
 
 func attack():
-	if(self is Enemy2):
-		print("attacking")
-	print("ENEMY ATTACKING PLAYER")
 	cooldownTimer.start()
 	var projectile = projectileScene.instantiate()
-	print("ENEMY SHOOTING PROJECTILE: ", projectile)
 	projectile.position = position
 	projectile.damage = attackDamage
 	get_parent().add_child(projectile)
@@ -86,14 +82,11 @@ func _physics_process(delta):
 
 func _on_hit_box_area_entered(area):
 	if area is Projectile and !(area is Enemy_Projectile):
-		#print("AREA DAMAGE: ", area.damage)
 		take_damage(area.damage)
 		area.queue_free()
 
 func take_damage(amount: int):
-	health -= amount
-	print("ENEMY HEALTH: ", health)
-	
+	health -= amount	
 	if (health <= 0):
 		die()
 
@@ -108,10 +101,10 @@ func die():
 	queue_free()
 
 func level_up(one, two, three):
-	speed += 50
+	speed += 20
 	attackDamage += 5
 	health += 10
-	attackRange += 50
+	attackRange += 25
 	$AttackRange/CollisionShape2D.shape.radius = attackRange
 	if player.level > 4:
 		viewRange += 50

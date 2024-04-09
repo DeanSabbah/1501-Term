@@ -358,7 +358,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_ld4l7")
 
 [node name="Label" type="Label" parent="InstructionPanel"]
 offset_right = 800.0
-offset_bottom = 537.0
+offset_bottom = 645.0
 theme_override_fonts/font = ExtResource("3_1cogb")
 theme_override_font_sizes/font_size = 50
 text = "
@@ -366,10 +366,12 @@ Instructions
 -------------------------------------------
 Left Arrow / A - Move Left
 Right Arrow / D - Move Right
-Up Arrow / W - Jump
+Space - Jump
 Left Click - Shoot
-Kill enemies to gain 
-experience and get stronger
+--------------------------------------------
+Kill enemies, avoid getting
+shot and definitely avoid
+the Aliens catching you!
 
 "
 horizontal_alignment = 1
