@@ -90,6 +90,7 @@ viewRange = 300
 attackDamage = 10
 speed = 200
 maxHealth = 50
+expDrop = 50
 cooldown = 0.4
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

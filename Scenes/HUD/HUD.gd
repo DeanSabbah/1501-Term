@@ -40,9 +40,10 @@ func set_ammo(ammo_count: int):
 
 	#ammo_bar.max_value = ammo_count
 	ammo_bar.value = ammo_count
+	ammo_label.text = str(ammo_count) + "/ " + str(player_original_ammo)
+	if (ammo_count == 0):
+		ammo_label.text = "MUST RELOAD!!"
 	print("ammo count: ", ammo_bar.value)
-
-
 
 func level_up(level:int, nextLevel:int, xp:int):
 	progress_bar.min_value = progress_bar.max_value

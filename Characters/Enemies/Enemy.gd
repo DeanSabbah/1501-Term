@@ -22,6 +22,7 @@ var dying:bool = false
 signal attacking(body:Node2D)
 
 func _ready():
+	player.leveled_up.connect(Callable(self, "level_up"))
 	animation_node.play("idle")
 	$ViewRange/CollisionShape2D.shape.radius = viewRange
 	$AttackRange/CollisionShape2D.shape.radius = attackRange
@@ -70,7 +71,6 @@ func _process(delta):
 	### TODO: ADD RAYCASTING SUPPORT ###
 	#if(collider.get_collider() == player and inView):
 	if inView:
-		print("here")
 		velocity = (player.position - position).normalized() * speed * delta * 60
 	elif(!inView):
 		velocity = Vector2.ZERO
@@ -95,7 +95,6 @@ func take_damage(amount: int):
 	if (health <= 0):
 		die()
 
-
 func die():
 	$CollisionBox.set_deferred("disabled", true)
 	if is_instance_valid(death_animation_node):
@@ -106,3 +105,15 @@ func die():
 	await get_tree().create_timer(0.8).timeout
 	# deletes the enemy
 	queue_free()
+
+func level_up(one, two, three):
+	speed += 50
+	attackDamage += 10
+	health += 10
+	attackRange += 50
+	$AttackRange/CollisionShape2D.shape.radius = attackRange
+	if player.level > 4:
+		viewRange += 50
+		$ViewRange/CollisionShape2D.shape.radius = viewRange
+
+

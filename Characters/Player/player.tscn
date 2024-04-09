@@ -165,8 +165,7 @@ script = ExtResource("1_4q1n4")
 speed = 400
 jump_strength = -500
 health = 100
-ammo = 5
-stamina_amount = 100
+ammo = 10
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 3
@@ -201,3 +200,4 @@ polygon = PackedVector2Array(-4.33333, 8.33333, -7.33333, 6.33333, -7.33333, -0.
 polygon = PackedVector2Array(-3.7897, 13.6029, -4.21078, 7.70832, -4.21078, 2.26715, -3.36862, 1.81372, 3.7897, 2.26715, 5.89509, 2.72058, 5.89509, 8.16175, 5.05293, 12.2426, 4.33333, 15.3333, 1.33333, 16, -1.26323, 15.8701, -4, 15)
 
 [connection signal="area_entered" from="HitBoxArea" to="." method="_on_hit_box_area_entered"]
+[connection signal="body_entered" from="HitBoxArea" to="." method="_on_hit_box_area_body_entered"]

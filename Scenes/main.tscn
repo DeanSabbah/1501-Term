@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://d2nqgkuy516bs"]
+[gd_scene load_steps=12 format=3 uid="uid://d2nqgkuy516bs"]
 
 [ext_resource type="PackedScene" uid="uid://tas2bojqxb7t" path="res://Characters/Player/player.tscn" id="1_ckd8x"]
 [ext_resource type="Script" path="res://Scenes/main.gd" id="1_lekt5"]
@@ -8,9 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://ckiadpp57mdd" path="res://Characters/Enemies/enemy_1.tscn" id="4_tcces"]
 [ext_resource type="PackedScene" uid="uid://dxvdtdeg8vpya" path="res://Characters/Enemies/enemy_2.tscn" id="6_mkb33"]
 [ext_resource type="PackedScene" uid="uid://6q678lltthm5" path="res://assests/icons/bullet_icon.tscn" id="7_qs7c6"]
-[ext_resource type="PackedScene" uid="uid://bidjfbml41sce" path="res://assests/icons/stamina_icon.tscn" id="8_ebuph"]
-[ext_resource type="PackedScene" uid="uid://bu34bv03olkng" path="res://assests/icons/health_icon.tscn" id="9_kloyo"]
-[ext_resource type="PackedScene" uid="uid://vrrafn2qrmw" path="res://pausemanager.tscn" id="10_hc6on"]
+[ext_resource type="PackedScene" path="res://assests/icons/stamina_icon.tscn" id="8_ebuph"]
+[ext_resource type="PackedScene" path="res://assests/icons/health_icon.tscn" id="9_kloyo"]
+[ext_resource type="PackedScene" path="res://pausemanager.tscn" id="10_hc6on"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_lekt5")
@@ -26,73 +26,57 @@ position = Vector2(2489, 30)
 [node name="player" parent="." instance=ExtResource("1_ckd8x")]
 visibility_layer = 5
 z_index = 3
-position = Vector2(3727, 439)
+position = Vector2(2633, 551)
 ammo = 25
-stamina_amount = null
+stamina_amount = 250
 
 [node name="Enemy 1" parent="." instance=ExtResource("4_tcces")]
-position = Vector2(815, 569)
-expDrop = 20
+position = Vector2(699, 655)
 
 [node name="Enemy 2" parent="." instance=ExtResource("4_tcces")]
 position = Vector2(110, 759)
-expDrop = 20
 
 [node name="Enemy 3" parent="." instance=ExtResource("4_tcces")]
 position = Vector2(1153, 797)
-expDrop = 20
 
 [node name="Enemy 4" parent="." instance=ExtResource("4_tcces")]
 position = Vector2(278, 373)
-expDrop = 20
 
 [node name="Enemy 5" parent="." instance=ExtResource("4_tcces")]
 position = Vector2(661, 826)
-expDrop = 20
 
 [node name="Enemy 6" parent="." instance=ExtResource("4_tcces")]
 position = Vector2(1150, 405)
-expDrop = 20
 
 [node name="Enemy 7" parent="." instance=ExtResource("4_tcces")]
 position = Vector2(2209, 626)
-expDrop = 20
 
 [node name="Enemy 8" parent="." instance=ExtResource("4_tcces")]
 position = Vector2(2362, 781)
-expDrop = 20
 
 [node name="Enemy 9" parent="." instance=ExtResource("4_tcces")]
 position = Vector2(2942, 955)
-expDrop = 20
 
 [node name="Enemy 10" parent="." instance=ExtResource("4_tcces")]
 position = Vector2(3513, 740)
-expDrop = 20
 
 [node name="Enemy 11" parent="." instance=ExtResource("4_tcces")]
 position = Vector2(4421, 954)
-expDrop = 20
 
 [node name="Enemy 12" parent="." instance=ExtResource("4_tcces")]
 position = Vector2(4945, 449)
-expDrop = 20
 
 [node name="Enemy 13" parent="." instance=ExtResource("4_tcces")]
 position = Vector2(4012, 407)
-expDrop = 20
 
 [node name="Enemy 14" parent="." instance=ExtResource("4_tcces")]
 position = Vector2(5417, 947)
-expDrop = 20
 
 [node name="Enemy 15" parent="." instance=ExtResource("4_tcces")]
 position = Vector2(5488, 447)
-expDrop = 20
 
 [node name="Enemy 16" parent="." instance=ExtResource("4_tcces")]
 position = Vector2(5029, 962)
-expDrop = 20
 
 [node name="BLACK BACKGROUND" type="ColorRect" parent="."]
 z_index = -5

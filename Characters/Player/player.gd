@@ -16,9 +16,12 @@ var xp:int = 0
 var level:int = 1
 var nextLevel:int = 50
 var health_multiplier:float = 1.1
-var original_ammo:int = 0
+var original_ammo:int
 var ammo_difference = 0
-var original_health:int = 0
+var original_health:int
+var sprinting:bool = false
+var double_jumped:bool = false
+var jump_in_air_counter:int = 0
 
 signal leveled_up(level, nextLevel:int, xp:int)
 signal got_xp(xp:int)
@@ -28,6 +31,18 @@ signal stamina_changed(stamina_amount)
 signal health_icon(health)
 
 func _ready():
+			#_____________________________
+	#original_health = health
+	#leveled_up.connect(hud.level_up)
+	#got_xp.connect(hud.set_xp)
+	#leveled_up.emit(level, nextLevel, xp)
+	#health_changed.connect(hud.set_health)
+	#health_changed.emit(health)
+	#stamina_changed.connect(hud.on_stamina)
+	#original_stamina = stamina_amount
+	#health_icon.connect(hud.on_health)
+	#health_icon.emit(health)
+		#_____________________________
 	leveled_up.connect(hud.level_up)
 	got_xp.connect(hud.set_xp)
 	leveled_up.emit(level, nextLevel, xp)
@@ -37,17 +52,27 @@ func _ready():
 	original_stamina = stamina_amount
 	health_icon.connect(hud.on_health)
 	health_icon.emit(health)
-
+	original_ammo = ammo
+	original_stamina = stamina_amount
 
 func _physics_process(delta):
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	velocity.x = input_direction.x * speed * 60 * delta
 	
+	
 	# Handle jumping
-	if is_on_floor() and Input.is_action_just_pressed("up"):
+	if is_on_floor() and Input.is_action_just_pressed("up") and stamina_amount >= 50:
 		velocity.y = jump_strength * delta * 60
+		jump_in_air_counter = 0
+		stamina_amount -= 50
+	elif not is_on_floor() and Input.is_action_just_pressed("up") and jump_in_air_counter == 0 and stamina_amount >= 50:
+		velocity.y = jump_strength * delta * 60
+		jump_in_air_counter += 1
+		stamina_amount -= 50
 	elif not is_on_floor():
 		velocity.y += gravity * delta * 60
+		
+	
 	
 	# Update animations based on movement
 	update_animations()
@@ -56,11 +81,20 @@ func _physics_process(delta):
 	move_and_slide()
 
 
-	if (Input.is_action_pressed("shift") or (Input.is_action_just_released("shift"))):
-		stamina()
-
-func _process(delta):
-	pass
+	if Input.is_action_pressed("shift") and stamina_amount > 0:
+		if(!sprinting):
+			speed += 200
+			sprinting = true
+		stamina_amount -= 1
+		stamina_changed.emit(stamina_amount)
+	elif Input.is_action_just_released("shift") or stamina_amount <= 0:
+		if(sprinting):
+			speed -= 200
+			sprinting = false
+	if !sprinting and stamina_amount < original_stamina and !Input.is_action_pressed("shift"):
+			stamina_amount += 1
+			stamina_changed.emit(stamina_amount)
+	print(stamina_amount)
 
 func update_animations():
 	var animation = ""
@@ -91,25 +125,24 @@ func update_animations():
 
 	$AnimatedSprite2D.play(animation)
 
-
+# shooting
 func _input(event):
 	if event is InputEventMouseButton and reloaded:
 		if (event.button_index == MOUSE_BUTTON_LEFT and event.pressed):
+			#if no ammo
+			if (ammo <= 0):
+				print("OUT OF AMMO!!!, MUST RELOAD")
+				reloaded = !reloaded
+				return
+
 			var projectile = projectileScene.instantiate()
 			projectile.damage = 10
 			ammo -= 1
 
-			if (ammo <= 0):
-				print("OUT OF AMMO!!!, MUST RELOAD")
-				reloaded = !reloaded
-				
 			ammo_changed.connect(hud.set_ammo)
 			ammo_changed.emit(ammo)
 
 			get_parent().add_child(projectile)
-	
-
-
 
 func _on_hit_box_area_entered(area):
 	if area is Enemy_Projectile:
@@ -128,9 +161,11 @@ func die():
 	$CollisionBox.set_deferred("disabled", true)
 	#animation_node.play("death")
 	#await get_tree().create_timer(0.8).timeout
+	# TODO: Better death handling
 	#_____________________
 	get_tree().quit()
 	#_____________________
+	pass
 
 func give_xp(xp_in):
 	xp += xp_in
@@ -140,10 +175,10 @@ func give_xp(xp_in):
 		level_up()
 
 func level_up():
-	health = round(100 * health_multiplier)
+	original_health = ceil(health*health_multiplier)
+	give_health()
 	health_multiplier += 0.1
 	print("MAX HEALTH IS:", health)
-	health_changed.emit(health)	
 	level += 1
 	nextLevel = ceil(nextLevel * 1.5)
 	print("YOU LEVELED UP TO: ", level)
@@ -152,31 +187,21 @@ func level_up():
 	leveled_up.emit(level, nextLevel, xp)
 
 func reset_ammo():
+	#_____________________________
+	#reloaded = true
+	#ammo = original_ammo
+	#print("ammo after: ", ammo)
+	#ammo_difference = 0
+	#hud.reset_ammo()
+	#_____________________________
 	reloaded = true
+	print("original ammo after reset: ", ammo)
+	print("ORIGINAL AMMO:")
 	ammo = original_ammo
+	#print(original_ammo)
 	print("ammo after: ", ammo)
 	ammo_difference = 0
 	hud.reset_ammo()
-
-func stamina_boost(boost:bool):
-	if (boost == true):
-		if (jump_strength > -600):
-			jump_strength += -100
-			speed += 200
-	else:
-		if (jump_strength < -500):
-			jump_strength += 100
-			speed += -200
-
-func stamina():
-	if (stamina_amount > 0):
-		stamina_amount -= 1
-		stamina_changed.emit(stamina_amount)
-		#print("STAMINA: ", stamina_amount)
-		stamina_boost(true)
-		await get_tree().create_timer(0.5).timeout
-	else:
-		stamina_boost(false)
 
 func give_stamina():
 	print("original stamina: ", original_stamina)
@@ -184,9 +209,21 @@ func give_stamina():
 	stamina_changed.emit(stamina_amount)
 
 func give_health():
+		#_____________________________
+	#print ("original health:", original_health)
+	#health = original_health
+	#health_icon.emit(health)
+	#_____________________________
+	
+
 	print ("original health:", original_health)
 	if (health <= (health * 1.5)):
 		health *= 2
 	else:
 		health = original_health
 	health_icon.emit(health)
+
+
+func _on_hit_box_area_body_entered(body:Node2D):
+	if(body is Enemy):
+		die()
