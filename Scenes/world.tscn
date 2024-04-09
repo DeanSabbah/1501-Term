@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://buy5saykfn0mt"]
+[gd_scene load_steps=17 format=3 uid="uid://buy5saykfn0mt"]
 
 [ext_resource type="Script" path="res://Scenes/world.gd" id="1_amf5r"]
 [ext_resource type="PackedScene" uid="uid://tas2bojqxb7t" path="res://Characters/Player/player.tscn" id="1_ckd8x"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://ct4dek63v5j5j" path="res://Scenes/credits-scene/credits.tscn" id="3_o8525"]
 [ext_resource type="PackedScene" uid="uid://ckiadpp57mdd" path="res://Characters/Enemies/enemy_1.tscn" id="4_tcces"]
 [ext_resource type="PackedScene" uid="uid://dxvdtdeg8vpya" path="res://Characters/Enemies/enemy_2.tscn" id="6_mkb33"]
+[ext_resource type="PackedScene" uid="uid://b25b2713j540b" path="res://Scenes/Green Zone/green_zone.tscn" id="7_474ff"]
 [ext_resource type="PackedScene" uid="uid://6q678lltthm5" path="res://assests/icons/bullet_icon.tscn" id="7_qs7c6"]
 [ext_resource type="PackedScene" path="res://assests/icons/stamina_icon.tscn" id="8_ebuph"]
 [ext_resource type="PackedScene" path="res://assests/icons/health_icon.tscn" id="9_kloyo"]
@@ -24,10 +25,13 @@ credits = ExtResource("3_o8525")
 [node name="Industrial" parent="." instance=ExtResource("2_7u5y1")]
 
 [node name="Power_Station" parent="." instance=ExtResource("2_k11w8")]
-position = Vector2(3616, 1)
+position = Vector2(3616, 0)
 
 [node name="Exclusion" parent="." instance=ExtResource("3_k1ohe")]
 position = Vector2(2489, 30)
+
+[node name="Green Zone" parent="." instance=ExtResource("7_474ff")]
+position = Vector2(5566, 656)
 
 [node name="player" parent="." instance=ExtResource("1_ckd8x")]
 visibility_layer = 5

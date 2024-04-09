@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://b25b2713j540b"]
+[gd_scene load_steps=5 format=3 uid="uid://b25b2713j540b"]
 
-[ext_resource type="Texture2D" uid="uid://cjy3rn4ay5yw5" path="res://Scenes/Green zone/Tileset.png" id="1_iew5g"]
+[ext_resource type="Texture2D" uid="uid://cjy3rn4ay5yw5" path="res://Scenes/Green Zone/Tileset.png" id="1_iew5g"]
+[ext_resource type="Texture2D" uid="uid://b7cw8djpvwhmo" path="res://assests/Industrial/3 Objects/4.png" id="2_xmo4r"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5ni6x"]
 texture = ExtResource("1_iew5g")
@@ -1483,7 +1484,7 @@ texture = ExtResource("1_iew5g")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_5ni6x")
 
-[node name="Node2D" type="Node2D"]
+[node name="Green Zone" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
 z_index = -1
@@ -1553,3 +1554,8 @@ offset_right = 1388.0
 offset_bottom = -470.0
 scale = Vector2(17.0807, 12.7528)
 color = Color(0.0592284, 0.0617929, 0.0549883, 1)
+
+[node name="4" type="Sprite2D" parent="."]
+position = Vector2(57, 93)
+scale = Vector2(2.0457, 2.62178)
+texture = ExtResource("2_xmo4r")
