@@ -6,6 +6,12 @@ extends CanvasLayer
 @onready var ammo_bar = $ammoBar
 @onready var player = self.get_parent().get_parent()
 @onready var player_original_ammo = player.ammo
+<<<<<<< HEAD
+=======
+@onready var ammo_label = $ammoLabel
+@onready var stamina_bar = $staminaBar
+@onready var stamina_label = $staminaLabel
+>>>>>>> origin/TEST
 func _ready():
 	
 	progress_bar.value = 0
@@ -18,7 +24,14 @@ func _ready():
 	
 	ammo_bar.min_value = 0
 	ammo_bar.max_value = player_original_ammo
+<<<<<<< HEAD
 	#ammo_bar.max_value = player_original_ammo
+=======
+	ammo_label.text = str(player_original_ammo)
+
+	stamina_bar.min_value = player.stamina_amount
+	stamina_bar.max_value = player.stamina_amount
+>>>>>>> origin/TEST
 
 
 func set_health(health: int):
@@ -45,4 +58,19 @@ func level_up(level:int, nextLevel:int, xp:int):
 	level_label.text = "Level %d" % level
 
 func reset_ammo():
+<<<<<<< HEAD
 	ammo_bar.value = player_original_ammo
+=======
+	ammo_bar.value = player_original_ammo
+	ammo_bar.min_value = 0
+	ammo_bar.max_value = player_original_ammo
+	ammo_label.text = str(player_original_ammo) + "/ " + str(player_original_ammo)
+	
+func on_stamina(stamina_changing:int):
+	stamina_bar.min_value = 0
+	stamina_bar.value = stamina_changing
+	stamina_label.text = "Stamina"
+
+func on_health(health_changing:int):
+	pass
+>>>>>>> origin/TEST

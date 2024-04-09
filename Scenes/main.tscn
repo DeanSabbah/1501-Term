@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 [gd_scene load_steps=9 format=3 uid="uid://d2nqgkuy516bs"]
+=======
+[gd_scene load_steps=11 format=3 uid="uid://d2nqgkuy516bs"]
+>>>>>>> origin/TEST
 
 [ext_resource type="PackedScene" uid="uid://tas2bojqxb7t" path="res://Characters/Player/player.tscn" id="1_ckd8x"]
 [ext_resource type="Script" path="res://Scenes/main.gd" id="1_lekt5"]
@@ -8,6 +12,9 @@
 [ext_resource type="PackedScene" uid="uid://ckiadpp57mdd" path="res://Characters/Enemies/enemy_1.tscn" id="4_tcces"]
 [ext_resource type="PackedScene" uid="uid://dxvdtdeg8vpya" path="res://Characters/Enemies/enemy_2.tscn" id="6_mkb33"]
 [ext_resource type="PackedScene" uid="uid://6q678lltthm5" path="res://assests/icons/bullet_icon.tscn" id="7_qs7c6"]
+[ext_resource type="PackedScene" uid="uid://bidjfbml41sce" path="res://assests/icons/stamina_icon.tscn" id="8_ebuph"]
+[ext_resource type="PackedScene" uid="uid://bu34bv03olkng" path="res://assests/icons/health_icon.tscn" id="9_kloyo"]
+[ext_resource type="PackedScene" uid="uid://vrrafn2qrmw" path="res://pausemanager.tscn" id="10_hc6on"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_lekt5")
@@ -25,6 +32,7 @@ visibility_layer = 5
 z_index = 3
 position = Vector2(3727, 439)
 ammo = 25
+stamina_amount = null
 
 [node name="Enemy 1" parent="." instance=ExtResource("4_tcces")]
 position = Vector2(815, 569)
@@ -75,7 +83,7 @@ position = Vector2(4945, 449)
 expDrop = 20
 
 [node name="Enemy 13" parent="." instance=ExtResource("4_tcces")]
-position = Vector2(4300, 442)
+position = Vector2(4012, 407)
 expDrop = 20
 
 [node name="Enemy 14" parent="." instance=ExtResource("4_tcces")]
@@ -105,4 +113,94 @@ metadata/_edit_lock_ = true
 position = Vector2(3634, 453)
 
 [node name="Bullet_Icon" parent="." instance=ExtResource("7_qs7c6")]
+<<<<<<< HEAD
 position = Vector2(3822, 456)
+=======
+position = Vector2(4059, 451)
+
+[node name="Bullet_Icon2" parent="." instance=ExtResource("7_qs7c6")]
+position = Vector2(4541, 447)
+
+[node name="Bullet_Icon3" parent="." instance=ExtResource("7_qs7c6")]
+position = Vector2(4812, 446)
+
+[node name="Bullet_Icon4" parent="." instance=ExtResource("7_qs7c6")]
+position = Vector2(3304, 956)
+
+[node name="Bullet_Icon5" parent="." instance=ExtResource("7_qs7c6")]
+position = Vector2(5431, 447)
+
+[node name="Bullet_Icon6" parent="." instance=ExtResource("7_qs7c6")]
+position = Vector2(4835, 835)
+
+[node name="Bullet_Icon7" parent="." instance=ExtResource("7_qs7c6")]
+position = Vector2(5123, 746)
+
+[node name="Bullet_Icon8" parent="." instance=ExtResource("7_qs7c6")]
+position = Vector2(3976, 968)
+
+[node name="Bullet_Icon9" parent="." instance=ExtResource("7_qs7c6")]
+position = Vector2(2368, 954)
+
+[node name="Bullet_Icon10" parent="." instance=ExtResource("7_qs7c6")]
+position = Vector2(2857, 511)
+
+[node name="Bullet_Icon11" parent="." instance=ExtResource("7_qs7c6")]
+position = Vector2(1482, 574)
+
+[node name="Bullet_Icon12" parent="." instance=ExtResource("7_qs7c6")]
+position = Vector2(634, 418)
+
+[node name="Bullet_Icon13" parent="." instance=ExtResource("7_qs7c6")]
+position = Vector2(373, 769)
+
+[node name="Bullet_Icon14" parent="." instance=ExtResource("7_qs7c6")]
+position = Vector2(865, 956)
+
+[node name="stamina_icon4" parent="." instance=ExtResource("8_ebuph")]
+position = Vector2(5214, 441)
+
+[node name="stamina_icon3" parent="." instance=ExtResource("8_ebuph")]
+position = Vector2(4165, 446)
+
+[node name="stamina_icon5" parent="." instance=ExtResource("8_ebuph")]
+position = Vector2(5207, 975)
+
+[node name="stamina_icon2" parent="." instance=ExtResource("8_ebuph")]
+position = Vector2(4326, 677)
+
+[node name="stamina_icon6" parent="." instance=ExtResource("8_ebuph")]
+position = Vector2(3145, 1121)
+
+[node name="stamina_icon8" parent="." instance=ExtResource("8_ebuph")]
+position = Vector2(2084, 962)
+
+[node name="stamina_icon7" parent="." instance=ExtResource("8_ebuph")]
+position = Vector2(3478, 392)
+
+[node name="stamina_icon9" parent="." instance=ExtResource("8_ebuph")]
+position = Vector2(2580, 424)
+
+[node name="stamina_icon10" parent="." instance=ExtResource("8_ebuph")]
+position = Vector2(1349, 484)
+
+[node name="stamina_icon11" parent="." instance=ExtResource("8_ebuph")]
+position = Vector2(1882, 359)
+
+[node name="stamina_icon12" parent="." instance=ExtResource("8_ebuph")]
+position = Vector2(1157, 964)
+
+[node name="stamina_icon13" parent="." instance=ExtResource("8_ebuph")]
+position = Vector2(760, 415)
+
+[node name="stamina_icon14" parent="." instance=ExtResource("8_ebuph")]
+position = Vector2(91, 611)
+
+[node name="health_icon" parent="." instance=ExtResource("9_kloyo")]
+position = Vector2(3891, 454)
+
+[node name="stamina_icon15" parent="." instance=ExtResource("8_ebuph")]
+position = Vector2(3963, 449)
+
+[node name="pausemanager" parent="." instance=ExtResource("10_hc6on")]
+>>>>>>> origin/TEST

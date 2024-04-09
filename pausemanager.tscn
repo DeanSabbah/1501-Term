@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://vrrafn2qrmw"]
+
+[ext_resource type="Script" path="res://pausemanager.gd" id="1_tts51"]
+
+[node name="pausemanager" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_tts51")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+visible = false
+offset_left = 315.0
+offset_top = 227.0
+offset_right = 424.0
+offset_bottom = 271.0
+scale = Vector2(5, 5)
+text = "PAUSED"
+horizontal_alignment = 1
+vertical_alignment = 1
+justification_flags = 131
+
+[node name="Label2" type="Label" parent="CanvasLayer"]
+offset_left = 1070.0
+offset_top = 619.0
+offset_right = 1145.0
+offset_bottom = 642.0
+text = "PAUSE (P)"

@@ -166,6 +166,7 @@ speed = 400
 jump_strength = -500
 health = 100
 ammo = 5
+stamina_amount = 100
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 3
