@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Coding"
+config/name="Alien Hunt : Eradication"
 run/main_scene="res://Scenes/Start Screen/start.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"

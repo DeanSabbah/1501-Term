@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://2vdwidhof3bu"
-path="res://.godot/imported/Coupon by craftpix.png-1139372089f543fe4feeeb93a54f4494.ctex"
+path="res://.godot/imported/Coupon by craftpix.png-a9bca93d243e787e8c6c678c8f5c448b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Green Zone/Coupon by craftpix.png"
-dest_files=["res://.godot/imported/Coupon by craftpix.png-1139372089f543fe4feeeb93a54f4494.ctex"]
+source_file="res://Scenes/Green zone/Coupon by craftpix.png"
+dest_files=["res://.godot/imported/Coupon by craftpix.png-a9bca93d243e787e8c6c678c8f5c448b.ctex"]
 
 [params]
 

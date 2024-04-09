@@ -15,7 +15,7 @@ signal ended
 ## An image to use as Title for the credits
 @onready var titleImg = get_node("scrollingContainer/titleImg")
 ## The credits file (formatted like a INI file (more info inside README.md))
-@export_file var creditsFile: String
+@export_file("example-CREDITS") var creditsFile: String
 
 var viewSize # The size of the window
 ## Speed of scrolling
@@ -93,18 +93,47 @@ func _ready():
 		playlist_track(playlistIndex)
 	
 	# Verify if a credits file has been provided
-	if creditsFile == null or creditsFile == "":
-		push_error("At least one credits file must be provided.")
-		assert(false)
+	#if creditsFile == null or creditsFile == "":
+		#push_error("At least one credits file must be provided.")
+		#assert(false)
 	
 	# Verify if credits file exists
-	if not FileAccess.file_exists(creditsFile):
-		push_error("Credits file does not exist.")
-		assert(false)
+	#if not FileAccess.file_exists(creditsFile):
+		#push_error("Credits file does not exist.")
+		#assert(false)
 	# Well, open the credits file and read it
-	file = FileAccess.open(creditsFile, FileAccess.READ)
-	credits = file.get_as_text()
-	file.close()
+	#file = FileAccess.open(creditsFile, FileAccess.READ)
+	#credits = file.get_as_text()
+	credits = "THANK YOU FOR PLAYING OUR GAME!
+
+{DEVELOPERS}
+Dean Sabbah
+Andy Louis
+Yordan Slavchev
+Raymond Nwenendah-Mpi
+Eric Chu
+
+
+{SPECIAL THANKS}
+{Connor Hillen}
+
+{MUSICS}
+Sound track by David Fesliyan
+Find it at https://www.fesliyanstudios.com/royalty-free-music/download/retro-platforming/454
+and https://www.fesliyanstudios.com/royalty-free-music/downloads-c/epic-music/4
+
+{SFX}
+www.samplewave.com
+www.pixabay.com
+
+{TOOLS USED}
+Game Engine: Godot Engine
+Text editor: Visual Studio Code
+Version Control: GitHub
+
+{ASSETS}
+Tile map and other map assest: Crafpix.net"
+	#file.close()
 	
 	# Parse the credits file
 	var scrollingText = null
@@ -239,6 +268,7 @@ func end():
 	if nextScene != null:
 		# warning-ignore:return_value_discarded
 		Global.switch_scene(nextScene.get_path())
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	elif quitOnEnd:
 		get_tree().quit()
 	elif destroyOnEnd:
