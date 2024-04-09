@@ -86,10 +86,11 @@ _data = {
 [node name="Enemy 1" type="CharacterBody2D"]
 script = ExtResource("1_jv4dg")
 attackRange = 125
-viewRange = 125
+viewRange = 300
 attackDamage = 10
-speed = 50
+speed = 200
 maxHealth = 50
+expDrop = 50
 cooldown = 0.4
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -107,6 +108,7 @@ one_shot = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
 position = Vector2(3, -14)
 shape = SubResource("CircleShape2D_bkv88")
+debug_color = Color(0.772549, 0.313726, 0.796078, 0.419608)
 
 [node name="ViewRange" type="Area2D" parent="."]
 
@@ -129,6 +131,9 @@ root_node = NodePath("../Sprite2D")
 libraries = {
 "": SubResource("AnimationLibrary_m0jbd")
 }
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+collide_with_areas = true
 
 [connection signal="body_entered" from="AttackRange" to="." method="_on_attack_range_body_entered"]
 [connection signal="body_exited" from="AttackRange" to="." method="_on_attack_range_body_exited"]

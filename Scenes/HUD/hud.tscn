@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bkymt1bsid8is"]
+[gd_scene load_steps=3 format=3 uid="uid://bkymt1bsid8is"]
 
 [ext_resource type="Script" path="res://Scenes/HUD/HUD.gd" id="1_qsyn8"]
+[ext_resource type="Texture2D" uid="uid://bnkk3qms68fg0" path="res://Scenes/HUD/REAL_AMMO.png" id="3_cboyq"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_qsyn8")
@@ -24,3 +25,49 @@ offset_top = 11.0
 offset_right = -216.0
 offset_bottom = 34.0
 grow_horizontal = 0
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = 817.0
+offset_top = 44.0
+offset_right = 1144.0
+offset_bottom = 79.0
+
+[node name="Health" type="Label" parent="HealthBar"]
+layout_mode = 0
+offset_left = -122.0
+offset_top = 6.0
+offset_right = -10.0
+offset_bottom = 29.0
+text = "Health"
+horizontal_alignment = 2
+
+[node name="ammoBar" type="TextureProgressBar" parent="."]
+z_index = 5
+texture_filter = 5
+offset_left = 579.0
+offset_top = -4.0
+offset_right = 829.0
+offset_bottom = 576.0
+rotation = 1.5708
+scale = Vector2(0.699, 1)
+fill_mode = 3
+texture_progress = ExtResource("3_cboyq")
+tint_progress = Color(0.917647, 0.803922, 0.768627, 1)
+
+[node name="ammoLabel" type="Label" parent="."]
+offset_left = 6.0
+offset_top = 36.0
+offset_right = 46.0
+offset_bottom = 59.0
+
+[node name="staminaBar" type="ProgressBar" parent="."]
+offset_left = 12.0
+offset_top = 596.0
+offset_right = 339.0
+offset_bottom = 631.0
+
+[node name="staminaLabel" type="Label" parent="."]
+offset_left = 13.0
+offset_top = 572.0
+offset_right = 85.0
+offset_bottom = 621.0
