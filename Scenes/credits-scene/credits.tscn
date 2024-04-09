@@ -12,21 +12,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3jpn6")
-creditsFile = "res://Scenes/credits-scene/example-CREDITS"
-backgroundColor = null
-loopVideo = null
-titlesColor = null
-namesColor = null
-margin = null
+creditsFile = "res://Scenes/credits-scene/example-CREDITS.txt"
 musicPlaylist = Array[AudioStream]([ExtResource("3_a1dab")])
-loopPlaylist = null
-enableControls = null
-speedUpControl = null
-slowDownControl = null
-enableSkip = null
-skipControl = null
 nextScene = ExtResource("3_er76c")
-quitOnEnd = null
 destroyOnEnd = true
 
 [node name="background" type="ColorRect" parent="."]

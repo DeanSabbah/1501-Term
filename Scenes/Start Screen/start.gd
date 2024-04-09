@@ -6,4 +6,4 @@ func _ready():
 	self.pressed.connect(self._button_pressed)
 
 func _button_pressed():
-	Global.switch_scene("res://scenes/world.tscn")
+	Global.switch_scene("res://Scenes/world.tscn")
