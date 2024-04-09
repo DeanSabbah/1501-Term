@@ -53,8 +53,6 @@ scale = Vector2(0.699, 1)
 fill_mode = 3
 texture_progress = ExtResource("3_cboyq")
 tint_progress = Color(0.917647, 0.803922, 0.768627, 1)
-<<<<<<< HEAD
-=======
 
 [node name="ammoLabel" type="Label" parent="."]
 offset_left = 3.0
@@ -73,4 +71,3 @@ offset_left = 13.0
 offset_top = 572.0
 offset_right = 85.0
 offset_bottom = 621.0
->>>>>>> origin/TEST

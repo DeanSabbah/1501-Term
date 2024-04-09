@@ -16,13 +16,9 @@ var xp:int = 0
 var level:int = 1
 var nextLevel:int = 50
 var health_multiplier:float = 1.1
-<<<<<<< HEAD
-var original_ammo = ammo
-=======
 var original_ammo:int = 0
 var ammo_difference = 0
 var original_health:int = 0
->>>>>>> origin/TEST
 
 signal leveled_up(level, nextLevel:int, xp:int)
 signal got_xp(xp:int)
@@ -156,15 +152,8 @@ func level_up():
 	leveled_up.emit(level, nextLevel, xp)
 
 func reset_ammo():
-<<<<<<< HEAD
-	print("RESETING AMMO")
-=======
->>>>>>> origin/TEST
 	reloaded = true
 	ammo = original_ammo
-<<<<<<< HEAD
-	hud.reset_ammo()
-=======
 	print("ammo after: ", ammo)
 	ammo_difference = 0
 	hud.reset_ammo()
@@ -201,4 +190,3 @@ func give_health():
 	else:
 		health = original_health
 	health_icon.emit(health)
->>>>>>> origin/TEST
