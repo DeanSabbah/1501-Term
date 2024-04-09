@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2vdwidhof3bu"
-path="res://.godot/imported/Coupon by craftpix.png-1139372089f543fe4feeeb93a54f4494.ctex"
+uid="uid://tsln7dwid0dq"
+path="res://.godot/imported/exampleTitle.png-9b2fec4a9e07a66dc2059819aed91c3f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Green Zone/Coupon by craftpix.png"
-dest_files=["res://.godot/imported/Coupon by craftpix.png-1139372089f543fe4feeeb93a54f4494.ctex"]
+source_file="res://Scenes/credits-scene/exampleTitle.png"
+dest_files=["res://.godot/imported/exampleTitle.png-9b2fec4a9e07a66dc2059819aed91c3f.ctex"]
 
 [params]
 

@@ -8,6 +8,7 @@ class_name Player extends CharacterBody2D
 @onready var hud = $Camera2D/HUD
 @onready var reloaded = true
 
+#var credits_scene = preload(
 var gravity = 20
 var mouse_position = get_global_mouse_position()
 var projectileScene = preload("res://Scenes/Weapons/Projectile.tscn")
@@ -29,6 +30,7 @@ signal health_changed(health)
 signal ammo_changed(ammo)
 signal stamina_changed(stamina_amount)
 signal health_icon(health)
+signal died()
 
 func _ready():
 			#_____________________________
@@ -174,9 +176,11 @@ func die():
 	#await get_tree().create_timer(0.8).timeout
 	# TODO: Better death handling
 	#_____________________
-	get_tree().quit()
+	# get_tree().change_scene_to_file("res://scenes/credits/GodotCredits.tscn")
+	# get_tree().change_scene_to_file("res://scene/Start screen/start.tscn")
 	#_____________________
-	pass
+	process_mode = Node.PROCESS_MODE_DISABLED
+	died.emit()
 
 func give_xp(xp_in):
 	xp += xp_in
@@ -201,7 +205,7 @@ func reset_ammo():
 	if (ammo == original_ammo):
 		return
 	
-	get_node("/root/Main/Reload").play()
+	get_node("/root/world/Reload").play()
 	reloaded = true
 	print("original ammo after reset: ", ammo)
 	print("ORIGINAL AMMO:")

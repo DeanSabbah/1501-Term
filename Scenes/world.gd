@@ -2,11 +2,15 @@ extends Node2D
 
 @onready var player = $player
 
+@export var start:PackedScene
+@export var credits:PackedScene
+
 var enemy_count:int = 0
+#var credit_scene = preload("res://scenes/credits/GodotCredits.tscn").instantiate()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Music.play()
+	player.died.connect(Callable(self, "lose"))
 	$Music.stream.loop = true
 	var children = get_children()
 	for child in children:
@@ -23,3 +27,9 @@ func enemy_dead():
 
 func win():
 	print("Congratulations, you win!!!")
+	#get_tree().change_scene_to_packed(credit_scene)
+
+func lose():
+	print("wow lol u suk")
+	Global.switch_scene(start.get_path())
+	print("those credits were fly broooo")

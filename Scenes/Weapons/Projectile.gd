@@ -5,7 +5,7 @@ class_name Projectile extends Area2D
 var direction:Vector2
 var damage:int
 
-@onready var player = get_node("/root/Main/player")
+@onready var player = get_node("/root/world/player")
 
 func _ready():
 	direction = player.get_node("Crosshair").get_direction()

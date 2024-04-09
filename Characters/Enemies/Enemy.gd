@@ -1,6 +1,6 @@
 class_name Enemy extends CharacterBody2D
 
-@onready var player:Player = get_node("/root/Main/player")
+@onready var player:Player = get_node("/root/world/player")
 @onready var cooldownTimer = $Cooldown
 @onready var animation_node = get_node("AnimationPlayer")
 @onready var death_animation_node = get_node("Death anim")

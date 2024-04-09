@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://cyo31ox4xa04i"]
+[gd_scene load_steps=39 format=3 uid="uid://cyo31ox4xa04i"]
 
 [ext_resource type="Texture2D" uid="uid://cmayqs042xudm" path="res://assests/players_blue_x1_LEFT.png" id="1_oycw6"]
 [ext_resource type="Texture2D" uid="uid://drunbm6xp4hae" path="res://assests/players_blue_x1.png" id="2_qglut"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://daldw1xjcaax0" path="res://Scenes/Industreal/industrial.tscn" id="6_4awhb"]
 [ext_resource type="Script" path="res://Scenes/Start Screen/instructions.gd" id="6_dx5g1"]
 [ext_resource type="Script" path="res://Scenes/Start Screen/popupClose.gd" id="8_5530i"]
+[ext_resource type="AudioStream" uid="uid://cds8hiqy0uvdn" path="res://assests/audio/60-seconds-2020-02-04_-_Powerful_-_David_Fesliyan.mp3" id="9_0udnn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mp4lt"]
 atlas = ExtResource("1_oycw6")
@@ -258,7 +259,7 @@ corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
-[node name="Node2D" type="Node2D"]
+[node name="start" type="Node2D"]
 position = Vector2(3, -2)
 
 [node name="IndustrialBG" parent="." instance=ExtResource("6_4awhb")]
@@ -379,3 +380,7 @@ offset_bottom = 537.0
 action_mode = 0
 flat = true
 script = ExtResource("8_5530i")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_0udnn")
+autoplay = true
