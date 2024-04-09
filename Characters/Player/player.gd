@@ -20,7 +20,7 @@ var original_ammo:int
 var ammo_difference = 0
 var original_health:int
 var sprinting:bool = false
-var double_jumped:bool = false
+var dying:bool = false
 var jump_in_air_counter:int = 0
 
 signal leveled_up(level, nextLevel:int, xp:int)
@@ -94,7 +94,6 @@ func _physics_process(delta):
 	if !sprinting and stamina_amount < original_stamina and !Input.is_action_pressed("shift"):
 			stamina_amount += 1
 			stamina_changed.emit(stamina_amount)
-	print(stamina_amount)
 
 func update_animations():
 	var animation = ""
@@ -122,8 +121,8 @@ func update_animations():
 			animation = "idle_right"
 		else:
 			animation = "walk_right"
-
-	$AnimatedSprite2D.play(animation)
+	if !dying:
+		$AnimatedSprite2D.play(animation)
 
 # shooting
 func _input(event):
@@ -143,6 +142,9 @@ func _input(event):
 			ammo_changed.emit(ammo)
 
 			get_parent().add_child(projectile)
+			$Shoot.play()
+	elif event is InputEventMouseButton:
+		$Empty.play()
 
 func _on_hit_box_area_entered(area):
 	if area is Enemy_Projectile:
@@ -158,6 +160,15 @@ func take_damage(amount: int):
 		die()
 
 func die():
+	dying = true
+	#play death dound
+	$Death.play()
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	get_tree().paused = true
+	$AnimatedSprite2D.play("death")
+	await get_tree().create_timer(1).timeout # wait 1 secs
+	hide()
+	await get_tree().create_timer(1.1).timeout # wait 2.1 secs
 	$CollisionBox.set_deferred("disabled", true)
 	#animation_node.play("death")
 	#await get_tree().create_timer(0.8).timeout
@@ -187,13 +198,10 @@ func level_up():
 	leveled_up.emit(level, nextLevel, xp)
 
 func reset_ammo():
-	#_____________________________
-	#reloaded = true
-	#ammo = original_ammo
-	#print("ammo after: ", ammo)
-	#ammo_difference = 0
-	#hud.reset_ammo()
-	#_____________________________
+	if (ammo == original_ammo):
+		return
+	
+	get_node("/root/Main/Reload").play()
 	reloaded = true
 	print("original ammo after reset: ", ammo)
 	print("ORIGINAL AMMO:")

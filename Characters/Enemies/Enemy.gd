@@ -20,6 +20,7 @@ var inRange:bool
 var dying:bool = false
 
 signal attacking(body:Node2D)
+signal dying_signal()
 
 func _ready():
 	player.leveled_up.connect(Callable(self, "level_up"))
@@ -104,11 +105,12 @@ func die():
 	animation_node.play("death")
 	await get_tree().create_timer(0.8).timeout
 	# deletes the enemy
+	dying_signal.emit()
 	queue_free()
 
 func level_up(one, two, three):
 	speed += 50
-	attackDamage += 10
+	attackDamage += 5
 	health += 10
 	attackRange += 50
 	$AttackRange/CollisionShape2D.shape.radius = attackRange
