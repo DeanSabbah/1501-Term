@@ -26,6 +26,10 @@ window/stretch/mode="canvas_items"
 window/stretch/aspect="ignore"
 mouse_cursor/custom_image="res://assests/image-removebg-preview.png"
 
+[editor]
+
+export/convert_text_resources_to_binary=false
+
 [input]
 
 right={

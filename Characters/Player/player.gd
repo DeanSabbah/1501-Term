@@ -179,7 +179,7 @@ func die():
 	# get_tree().change_scene_to_file("res://scenes/credits/GodotCredits.tscn")
 	# get_tree().change_scene_to_file("res://scene/Start screen/start.tscn")
 	#_____________________
-	process_mode = Node.PROCESS_MODE_DISABLED
+	get_tree().paused = false
 	died.emit()
 
 func give_xp(xp_in):

@@ -22,14 +22,13 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func enemy_dead():
 	enemy_count -= 1
+	print("there are ", enemy_count, " enemies left")
 	if(enemy_count <= 0):
 		win()
 
 func win():
 	print("Congratulations, you win!!!")
-	#get_tree().change_scene_to_packed(credit_scene)
+	Global.switch_scene(credits.get_path())
 
 func lose():
-	print("wow lol u suk")
-	Global.switch_scene(start.get_path())
-	print("those credits were fly broooo")
+	Global.switch_scene(credits.get_path())

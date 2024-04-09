@@ -1,37 +1,29 @@
-[Producer]
-Zal Magro
-Kidlat Klein
-[Co-Producer]
-Valère O'Hannigan
+THANK YOU FOR PLAYING OUR GAME!
 
-[Screenplay]
-Giacomina McCoy
-Niki Ricci
-Feidhlim Antov
-Lykos Beatty
-Anniina Wolff
+{DEVELOPERS}
+Dean Sabbah
+Andy Louis
+Yordan Slavchev
+Raymond Nwenendah-Mpi
+Eric Chu
 
-[Programmers]
-Abraham Gatsby
 
-[Graphic designers]
-Jyoti Porras
-Kiran Baaiman
-
-{SPECIAL THANKS TO}
-{Lauro Lamarre}
+{SPECIAL THANKS}
+{Connor Hillen}
 
 {MUSICS}
-[Never Gonna Give You Up]
-by Rick Astley
+Sound track by David Fesliyan
+Find it at https://www.fesliyanstudios.com/royalty-free-music/download/retro-platforming/454
+and https://www.fesliyanstudios.com/royalty-free-music/downloads-c/epic-music/4
 
-{FONTS}
-[FreeSerif]
-by GNU FreeFont
-[FreeSans]
-by GNU FreeFont
-[FreeMono]
-by GNU FreeFont
+{SFX}
+www.samplewave.com
+www.pixabay.com
 
-[License]
-GNU General Public License v3.0
+{TOOLS USED}
+Game Engine: Godot Engine
+Text editor: Visual Studio Code
+Version Control: GitHub
+
+{ASSETS}
+Tile map and other map assest: Crafpix.net

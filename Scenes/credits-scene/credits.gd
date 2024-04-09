@@ -177,7 +177,6 @@ func _ready():
 
 
 func _process(delta):
-	print("bruh")
 	# For some reason the position of the container is shifted once displayed.
 	# This workaround fix it
 	if is_first_frame:
@@ -239,7 +238,7 @@ func end():
 	# otherwise if quitOnEnd is enabled, just quit
 	if nextScene != null:
 		# warning-ignore:return_value_discarded
-		get_tree().change_scene_to_file(nextScene.get_path())
+		Global.switch_scene(nextScene.get_path())
 	elif quitOnEnd:
 		get_tree().quit()
 	elif destroyOnEnd:

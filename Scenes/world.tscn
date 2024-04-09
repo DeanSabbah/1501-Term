@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://buy5saykfn0mt"]
+[gd_scene load_steps=16 format=3 uid="uid://buy5saykfn0mt"]
 
 [ext_resource type="Script" path="res://Scenes/world.gd" id="1_amf5r"]
 [ext_resource type="PackedScene" uid="uid://tas2bojqxb7t" path="res://Characters/Player/player.tscn" id="1_ckd8x"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://u1k6e3tmgfm1" path="res://Scenes/Exclusion/exclusion.tscn" id="3_k1ohe"]
 [ext_resource type="PackedScene" uid="uid://ct4dek63v5j5j" path="res://Scenes/credits-scene/credits.tscn" id="3_o8525"]
 [ext_resource type="PackedScene" uid="uid://ckiadpp57mdd" path="res://Characters/Enemies/enemy_1.tscn" id="4_tcces"]
-[ext_resource type="PackedScene" uid="uid://dxvdtdeg8vpya" path="res://Characters/Enemies/enemy_2.tscn" id="6_mkb33"]
 [ext_resource type="PackedScene" uid="uid://b25b2713j540b" path="res://Scenes/Green Zone/green_zone.tscn" id="7_474ff"]
 [ext_resource type="PackedScene" uid="uid://6q678lltthm5" path="res://assests/icons/bullet_icon.tscn" id="7_qs7c6"]
 [ext_resource type="PackedScene" path="res://assests/icons/stamina_icon.tscn" id="8_ebuph"]
@@ -36,7 +35,7 @@ position = Vector2(5566, 656)
 [node name="player" parent="." instance=ExtResource("1_ckd8x")]
 visibility_layer = 5
 z_index = 3
-position = Vector2(2633, 551)
+position = Vector2(129, 950)
 ammo = 25
 stamina_amount = 250
 
@@ -104,8 +103,11 @@ expDrop = 10
 position = Vector2(5029, 962)
 expDrop = 10
 
-[node name="2_Enemy 2 17" parent="." instance=ExtResource("6_mkb33")]
-position = Vector2(3634, 453)
+[node name="Bullet_Icon16" parent="." instance=ExtResource("7_qs7c6")]
+position = Vector2(6711, 540)
+
+[node name="Bullet_Icon15" parent="." instance=ExtResource("7_qs7c6")]
+position = Vector2(5868, 507)
 
 [node name="Bullet_Icon" parent="." instance=ExtResource("7_qs7c6")]
 position = Vector2(4059, 451)
@@ -197,7 +199,6 @@ position = Vector2(3963, 449)
 [node name="pausemanager" parent="." instance=ExtResource("10_hc6on")]
 
 [node name="BLACK BACKGROUND" type="ColorRect" parent="."]
-visible = false
 z_index = -5
 offset_left = -1533.0
 offset_top = -1588.0
@@ -215,3 +216,45 @@ autoplay = true
 
 [node name="Reload" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_jadyh")
+
+[node name="Enemy 17" parent="." instance=ExtResource("4_tcces")]
+position = Vector2(5641, 576)
+
+[node name="Enemy 18" parent="." instance=ExtResource("4_tcces")]
+position = Vector2(5981, 182)
+
+[node name="Enemy 19" parent="." instance=ExtResource("4_tcces")]
+position = Vector2(6407, 307)
+
+[node name="Enemy 20" parent="." instance=ExtResource("4_tcces")]
+position = Vector2(6621, 623)
+
+[node name="Enemy 21" parent="." instance=ExtResource("4_tcces")]
+position = Vector2(6783, 288)
+
+[node name="Enemy 22" parent="." instance=ExtResource("4_tcces")]
+position = Vector2(6634, 198)
+
+[node name="Enemy 23" parent="." instance=ExtResource("4_tcces")]
+position = Vector2(7300, 332)
+
+[node name="stamina_icon16" parent="." instance=ExtResource("8_ebuph")]
+position = Vector2(6038, 372)
+
+[node name="stamina_icon17" parent="." instance=ExtResource("8_ebuph")]
+position = Vector2(6057, 561)
+
+[node name="stamina_icon18" parent="." instance=ExtResource("8_ebuph")]
+position = Vector2(6708, 123)
+
+[node name="health_icon2" parent="." instance=ExtResource("9_kloyo")]
+position = Vector2(6772, 477)
+
+[node name="health_icon3" parent="." instance=ExtResource("9_kloyo")]
+position = Vector2(6147, 103)
+
+[node name="health_icon4" parent="." instance=ExtResource("9_kloyo")]
+position = Vector2(5919, 629)
+
+[node name="health_icon5" parent="." instance=ExtResource("9_kloyo")]
+position = Vector2(7449, 332)

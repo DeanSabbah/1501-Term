@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://ct4dek63v5j5j"]
+[gd_scene load_steps=4 format=3 uid="uid://ct4dek63v5j5j"]
 
 [ext_resource type="Script" path="res://Scenes/credits-scene/credits.gd" id="1_3jpn6"]
-[ext_resource type="Texture2D" uid="uid://tsln7dwid0dq" path="res://Scenes/credits-scene/exampleTitle.png" id="2_xutvm"]
 [ext_resource type="AudioStream" uid="uid://cds8hiqy0uvdn" path="res://assests/audio/60-seconds-2020-02-04_-_Powerful_-_David_Fesliyan.mp3" id="3_a1dab"]
 [ext_resource type="PackedScene" uid="uid://cyo31ox4xa04i" path="res://Scenes/Start Screen/start.tscn" id="3_er76c"]
 
@@ -14,8 +13,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3jpn6")
 creditsFile = "res://Scenes/credits-scene/example-CREDITS"
-speed = null
-titleImage = ExtResource("2_xutvm")
 backgroundColor = null
 loopVideo = null
 titlesColor = null
